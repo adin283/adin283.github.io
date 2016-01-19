@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: My Octopress Blog
-subtitle: A blogging framework for hackers.
-author: Your Name
+url: http://adin283.github.io
+title: Kevin's Blog
+subtitle: 小博子的念念碎
+author: Kevin
 simple_search: https://www.google.com/search
 description:
 
@@ -99,3 +99,6 @@ google_analytics_tracking_id:
 
 # Facebook Like
 facebook_like: false
+
+# Weibo Share
+weibo_share: true
