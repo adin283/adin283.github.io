@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Kevin&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Kevin的技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Kevin's Blog">
+<meta property="og:url" content="http://www.zhuwenbo.net/index.html">
+<meta property="og:site_name" content="Kevin's Blog">
+<meta property="og:description" content="Kevin的技术博客">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kevin's Blog">
+<meta name="twitter:description" content="Kevin的技术博客">
+  
+    <link rel="alternate" href="/atom.xml" title="Kevin&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Kevin&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">碎碎念</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://www.zhuwenbo.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2016-01-20-uicollectionview-align-right" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/20/2016-01-20-uicollectionview-align-right/" class="article-date">
+  <time datetime="2016-01-19T16:38:31.000Z" itemprop="datePublished">2016-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/20/2016-01-20-uicollectionview-align-right/">UICollectionView align right</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>参考链接：<br><a href="http://stackoverflow.com/questions/13588283/how-to-center-align-the-cells-of-a-uicollectionview" target="_blank" rel="external">http://stackoverflow.com/questions/13588283/how-to-center-align-the-cells-of-a-uicollectionview</a></p>
+<p>方案一：</p>
+<p>You can get similar result by performing a transform on the collection view and reverse the flip on its content:</p>
+<p>First when creating the UICollectionView I performed a flip on it:</p>
+<p>[collectionView_ setTransform:CGAffineTransformMakeScale(-1, 1)];</p>
+<p>Then subclass UICollectionViewCell and in here do the same flip on its contentView:</p>
+<p>[self.contentView setTransform:CGAffineTransformMakeScale(-1, 1)];</p>
+<p>方案二：<br><a href="https://github.com/mokagio/UICollectionViewRightAlignedLayout" target="_blank" rel="external">https://github.com/mokagio/UICollectionViewRightAlignedLayout</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhuwenbo.net/2016/01/20/2016-01-20-uicollectionview-align-right/" data-id="cirrspyb10003kl6qv78ggdff" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-19-mx-blue-hhkb-gh60" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/01/18/2016-01-19-mx-blue-hhkb-gh60/" class="article-date">
+  <time datetime="2016-01-18T15:35:24.000Z" itemprop="datePublished">2016-01-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/01/18/2016-01-19-mx-blue-hhkb-gh60/">MX Blue HHKB GH60</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <img src="/images/GH60/GH60_light_full.JPG" title="GH60_light_full.JPG GH60_light_full.JPG">
+<p>一直是一把 HHKB Pro2 在公司使用，回家的话就用 mpb 自带的键盘。<br>期间也用过青轴 minila air、poker2，但是 minila air 右边 shift 比较蛋疼，而且空格键很短，左边经常按不到，虽然左边的 fn 是可以设置成空格的，但是按着还是挺不爽的；poker2没有用很长时间，但是用过了 hhkb 之后就受不鸟其他键位了。。。所以一直都是用 mbp 的自带薄膜键盘，用 Karabiner 映射了一些键，比如 | 改成 delete。</p>
+<h2 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想"></a>突发奇想</h2><p>要是能有一把 HHKB 键位的青轴键盘就好了，因为之前用过几把机械键盘都是青轴的，还是对青轴比较情有独钟一些。后来也去试过 minila air 和 cherry 的红轴，感觉和 hhkb pro2 手感其实相差不多，所以还是决定组一个青轴的区别与 hhkb pro2 的手感。</p>
+<h2 id="搜索材料"><a href="#搜索材料" class="headerlink" title="搜索材料"></a>搜索材料</h2><p>首先了解了一下板子，santa 的电路板我看了下，是可以组成 hhkb 键位的。于是当晚拉着客服问到了两点多，就下单了。<br>清单如下：</p>
+<pre><code>1. santa pcb 板子
+2. 定位板/钢板
+3. 卫星轴 4 个（空格，shift * 2，enter，control/caps lock）
+4. cherry青轴 67 个（老板给多发了几个，因为青轴可能有些坏轴）
+5. 塑料外壳
+6. PBT 键帽 117 键的，键位刚好组 hhkb 的键位
+7. 轴间纸一张
+8. 透明轴盖 65 个
+9. 热插拔针脚 130 个（一个键帽两个脚）
+</code></pre><h2 id="组装步骤"><a href="#组装步骤" class="headerlink" title="组装步骤"></a>组装步骤</h2><h3 id="组装卫星轴"><a href="#组装卫星轴" class="headerlink" title="组装卫星轴"></a>组装卫星轴</h3><p>有防呆设计，直接装上就好了，卡进的时候可能要稍稍用点力，没事不会弄坏，黑色的塑料还是有一些韧性的。组装好卫星轴后安装到 PCB 板上，有卡扣按上就好了。</p>
+<h3 id="开轴改热插拔，上轴间纸"><a href="#开轴改热插拔，上轴间纸" class="headerlink" title="开轴改热插拔，上轴间纸"></a>开轴改热插拔，上轴间纸</h3><p>开轴盖其实很简单，用镊子就可以，我刚开始在公司没有镊子，找了两个牙签开的也挺轻松。轴盖打开之后把两个热插拔针脚插入轴上方 LED 针脚处，然后贴上轴间纸，再盖上透明轴盖。这步挺费工夫的，我搞了两三个小时才搞定。其实吧，热插拔和轴间纸都没有必要装；反正 LED 便宜，真的要幻灯把 LED 换了就是。轴间纸也是玄学，根本不能防尘和影响手感。透明轴盖除了装B也没有什么乱用。</p>
+<h3 id="固定轴到-PCB-和定位板"><a href="#固定轴到-PCB-和定位板" class="headerlink" title="固定轴到 PCB 和定位板"></a>固定轴到 PCB 和定位板</h3><p>层次结构是这样的：PCB，轴，定位板。这步有点技巧，把四周的轴先安装好，然后再安装中间的轴。不要先把轴都卡好在定位板上，这样你会发现怎么都没法插到 PCB 板上了，因为 PCB 板上的 LED 孔很小，很难对上。而且现在是一个轴4个脚，你要一下将60 * 4，就是240个脚同时对准插在 PCB 板上，难度可想而知。所以如果你觉得定位板对手感影响不大的话，就可以省掉定位板，这样安装轴的难度会小很多。安装轴的时候注意不要将轴上的针脚弄歪，这样针脚容易折掉，没有插到 PCB 上对应的空里，需要拔下来重新插过。按好再拔下来难度很大。<br>要注意的是，拿你的键帽笔画一些，轴不要按错位置，不然后面你会发现怎么键帽相互打架，就悲剧了。这个事情在撸主身上就发生了，坐下的三个键，我往右边偏了一格，结果三个键全都拆下来重新按，重新焊；还好有吸枪，还是拆下来了。反正就是拆比装难了，一定不要按错了。</p>
+<h3 id="焊接"><a href="#焊接" class="headerlink" title="焊接"></a>焊接</h3><p>用橡皮筋固定PCB，轴和定位板，然后就上焊锡、松香电烙铁焊吧。最好弄个可调温的电烙铁，温度设置在400度比较合适。我是焊一排然后插到电脑上测试一排，如果有问题可以及时修正。240多个脚，加油焊吧，其实焊接还是挺快的，最费时费力的还是开轴改热插拔和贴轴间纸那步，所以我强烈建议不用改热插拔和贴轴间纸。<br><img src="/images/GH60/GH60_weld_1.JPG" title="GH60_weld_1.JPG GH60_weld_1.JPG"><br><img src="/images/GH60/GH60_weld_2.JPG" title="GH60_weld_2.JPG GH60_weld_2.JPG"></p>
+<h3 id="测试键位"><a href="#测试键位" class="headerlink" title="测试键位"></a>测试键位</h3><p>再测试一下所有键是否有用，右上角的键因为没有刷配系的原因可能是么有用的，没有关系你用万用表蜂鸣档试下，按键按下的时候能通就没有问题。一会刷了配系就好了。</p>
+<h3 id="安装热插拔-LED"><a href="#安装热插拔-LED" class="headerlink" title="安装热插拔 LED"></a>安装热插拔 LED</h3><p>LED 灯脚需要剪一下，剪了之后插进热插拔的孔就好，注意下正负极。默认是 fn + v，打开键盘灯，在打开键盘灯的情况下安装灯吧，安上点亮就好了，正负极安反也没关系，不会烧掉的。换下正负极就是了。<br>LED 长角的是正极，但是你剪短之后两个脚是一样长的，怎么区分正负极呢，你看 LED 等里面那坨东西有两部分组成，比较小一点的那个是正极。全按上之后就都亮了，恩，完美。<br><img src="/images/GH60/GH60_LED.JPG" title="GH60_LED.JPG GH60_LED.JPG"></p>
+<h3 id="安装外壳"><a href="#安装外壳" class="headerlink" title="安装外壳"></a>安装外壳</h3><p>把焊好的 PCB 安装到外壳上，有6颗螺丝，拧上就好了。</p>
+<h3 id="安装键帽"><a href="#安装键帽" class="headerlink" title="安装键帽"></a>安装键帽</h3><p>键帽高度从下到上是 R1，R1，R2，R3，R4。一个个按上就是了，有卫星轴的对准一下卫星轴。那么硬件部分就组装好了。</p>
+<h3 id="刷配系-固件"><a href="#刷配系-固件" class="headerlink" title="刷配系/固件"></a>刷配系/固件</h3><p>mac 上据我所知只能刷 hex，有两个<a href="https://github.com/tmk/tmk_keyboard" target="_blank" rel="external">tmk_keyboard</a>，<a href="https://github.com/kairyu/tmk_keyboard_custom" target="_blank" rel="external">tmk_keyboard_custom</a>。记得是刷<a href="https://github.com/kairyu/tmk_keyboard_custom" target="_blank" rel="external">tmk_keyboard_custom</a>,不要去刷tmk_keyboard那个，刷了tmk_keyboard之后可能导致键盘没有反应，我也不知道为什么。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//mac上需要安装的编译环境</div><div class="line">brew install Caskroom/cask/crosspack-avr</div><div class="line">brew install gcc-avr</div><div class="line">brew install dfu-programmer</div><div class="line">brew install gcc</div></pre></td></tr></table></figure></p>
+<p>再说一遍，请用<a href="https://github.com/kairyu/tmk_keyboard_custom" target="_blank" rel="external">tmk_keyboard_custom</a><br>在keyboard/gh60/config.h中定义宏 #define GH60_REV_CHN 1<br>make KEYMAP=hhkb dfu<br>但是你会发现有些报错，我一个个解决了，但是刷好之后，键盘并不能达到我想要的配系。所以我还是回家用 windows 的机器来刷 epp 文件，这个是图形化的工具比较简单。<br>项目地址：<a href="https://github.com/kairyu/tkg-toolkit" target="_blank" rel="external">tkg-toolkit</a><br>图形化界面网址：<br><a href="http://www.keyboard-layout-editor.com/#/gists/bd039cbcf89e7fad09e8" target="_blank" rel="external">keyboard-layout-editor</a><br><a href="http://www.enjoyclick.org/tkg/" target="_blank" rel="external">tkg</a><br>编辑好键位之后复制 raw-data 的 json 数据，粘贴的 tkg 网站里面，生成 epp。<br>然后设置tkg-toolkit/windows/setup.bat来安装设置，用tkg-toolkit/windows/reflash.bat来刷固件，刷之前按一下键盘背后的按钮进入 dfu 模式。如果有问题，记得装键盘驱动。</p>
+<h2 id="成品图"><a href="#成品图" class="headerlink" title="成品图"></a>成品图</h2><img src="/images/GH60/GH60_light_gray.JPG" title="GH60_light_gray.JPG GH60_light_gray.JPG">
+<img src="/images/GH60/GH60_light_part.JPG" title="GH60_light_part.JPG GH60_light_part.JPG">
+<img src="/images/GH60/GH60_no_light.JPG" title="GH60_no_light.JPG GH60_no_light.JPG">
+<h2 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h2><ul>
+<li><a href="http://www.pcwaishe.cn/thread-632487-1-1.html" target="_blank" rel="external">satan版GH 60组有钢茶 POKER配列详细教程</a></li>
+<li><a href="http://www.enjoyclick.org/tkg/" target="_blank" rel="external">tkg</a></li>
+<li><a href="http://www.keyboard-layout-editor.com/" target="_blank" rel="external">keyboard-layout-editor</a></li>
+<li><a href="http://www.satan.com.cn/p/399.html" target="_blank" rel="external">GH60PCB对比之Satan &amp; 菜菜</a></li>
+<li><a href="http://pcwaishe.cn/thread-641592-1-1.html" target="_blank" rel="external"> 新手扫盲——《GH60》 </a></li>
+<li><a href="http://www.pcwaishe.cn/thread-540703-1-1.html" target="_blank" rel="external">【你真的了解“轴间纸”？会装吗？内附详细教程】</a></li>
+<li><a href="http://www.armygroup.com.tw/sns/space.php?do=thread&amp;id=54&amp;uid=23227" target="_blank" rel="external">機械式鍵盤60Key-GH60 刷鍵位教程</a></li>
+<li><a href="http://www.v2ex.com/t/161887" target="_blank" rel="external">拿到 GH60 的艰辛与幸福之路</a></li>
+<li><a href="http://yuntv.letv.com/bcloud.html?uu=7ddc155d09&amp;vu=b90507659c" target="_blank" rel="external">刷配系视频</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhuwenbo.net/2016/01/18/2016-01-19-mx-blue-hhkb-gh60/" data-id="cirrspyav0001kl6qby08dpfr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-19-use-dtcoretext-to-convert-html-into-nsattributedstring-and-calculate-the-labels-height" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/19/2016-01-19-use-dtcoretext-to-convert-html-into-nsattributedstring-and-calculate-the-labels-height/" class="article-date">
+  <time datetime="2015-08-19T09:32:51.000Z" itemprop="datePublished">2015-08-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/19/2016-01-19-use-dtcoretext-to-convert-html-into-nsattributedstring-and-calculate-the-labels-height/">使用DTCoreText转换HTML为NSAttributedString</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先引入DTCoreText，推荐使用CocoaPods，因为其实DTCoreText还依赖于DTFoundation，手动引入比较麻烦。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pod &apos;DTCoreText&apos;, &apos;~&gt; 1.6.16&apos;</div><div class="line"></div><div class="line">#import &lt;DTCoreText.h&gt;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>使用DTCoreText转换HTML为NSAttributedString</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *htmlString = @&quot;&lt;ol&gt;&lt;li&gt;aaaaaa&lt;/li&gt;&lt;li&gt;bbbbbbbb&lt;/li&gt;&lt;li&gt;cccccccccc&lt;/li&gt;&lt;/ol&gt;&quot;;</div><div class="line">NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data documentAttributes:nil];</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用生成的NSAttributedString为UILabel的attributedText赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myLabel.attributedText = attrString;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Error</strong> 其实这样是不行的，会报错lineBreakMode没有啊什么的，虽然生成的是NSAttributedString，但是这个和我们用[[NSAttributedString alloc] init]生成的是不一样的东西，得有容器来装它。</p>
+<ul>
+<li><p>使用DTAttributedLabel，初始化和赋值方法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (DTAttributedLabel *)descriptionLabel</div><div class="line">&#123;</div><div class="line">    if (!_descriptionLabel) &#123;</div><div class="line">        _descriptionLabel = [[DTAttributedLabel alloc] init];</div><div class="line">        _descriptionLabel.numberOfLines = 0;</div><div class="line">        _descriptionLabel.lineBreakMode = NSLineBreakByCharWrapping;</div><div class="line">    &#125;</div><div class="line">    return _descriptionLabel;</div><div class="line">&#125;</div><div class="line">// 注意这里是attributedString，而不是attributedText</div><div class="line">descriptionLabel.attributedString = attrString;</div></pre></td></tr></table></figure>
+</li>
+<li><p>计算文字高度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DTCoreTextLayouter *layouter = [[DTCoreTextLayouter alloc] initWithAttributedString:attrString];</div><div class="line">        </div><div class="line">CGRect maxRect = CGRectMake(0, 0, 320, CGFLOAT_HEIGHT_UNKNOWN);</div><div class="line">NSRange entireString = NSMakeRange(0, [attrString length]);</div><div class="line">DTCoreTextLayoutFrame *layoutFrame = [layouter layoutFrameWithRect:maxRect range:entireString];</div><div class="line">CGSize sizeNeed = [layoutFrame frame].size;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://github.com/Cocoanetics/DTCoreText" target="_blank" rel="external">DTCoreText on Github</a></li>
+<li><a href="https://docs.cocoanetics.com/DTCoreText/docs/Programming Guide.html" target="_blank" rel="external">DTCoreText Programming Guide</a></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhuwenbo.net/2015/08/19/2016-01-19-use-dtcoretext-to-convert-html-into-nsattributedstring-and-calculate-the-labels-height/" data-id="cirrspyay0002kl6qs97vipq6" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2016-01-19-tips-for-video-recording-on-ios-and-android" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/08/14/2016-01-19-tips-for-video-recording-on-ios-and-android/" class="article-date">
+  <time datetime="2015-08-13T17:15:19.000Z" itemprop="datePublished">2015-08-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/08/14/2016-01-19-tips-for-video-recording-on-ios-and-android/">iOS和Android视频录制播放注意事项</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>iOS使用AVFoundation录制的视频默认格式是mov的，在Android下无法播放，需要使用AVAssetExportSession转码/压缩之后Android才能播放，转码代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">- (void)compressionVideoWithURL:(NSURL *)URL</div><div class="line">&#123;</div><div class="line">    AVURLAsset *avAssert = [AVURLAsset URLAssetWithURL:URL options:nil];</div><div class="line">    NSArray *compatiblePresets = [AVAssetExportSession exportPresetsCompatibleWithAsset:avAssert];</div><div class="line">    if ([compatiblePresets containsObject:AVAssetExportPresetLowQuality]) &#123;</div><div class="line">        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:avAssert presetName:AVAssetExportPresetPassthrough];</div><div class="line">       </div><div class="line">        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</div><div class="line">        NSString *outputFilePath = [NSString stringWithFormat:@&quot;%@/%@&quot;, docDir, [AppManager zhidaoVideoCompressedFileName]];</div><div class="line">       </div><div class="line">        // can not replace the exists file,so delete it first</div><div class="line">        NSFileManager *fileManager = [NSFileManager defaultManager];</div><div class="line">        if ([fileManager fileExistsAtPath:outputFilePath]) &#123;</div><div class="line">            [fileManager removeItemAtPath:outputFilePath error:nil];</div><div class="line">        &#125;</div><div class="line">       </div><div class="line">        NSLog(@&quot;resultPath:%@&quot;, outputFilePath);</div><div class="line">       </div><div class="line">        exportSession.outputURL = [NSURL fileURLWithPath:outputFilePath];</div><div class="line">        exportSession.outputFileType = AVFileTypeMPEG4;</div><div class="line">        exportSession.shouldOptimizeForNetworkUse = YES;</div><div class="line">        [exportSession exportAsynchronouslyWithCompletionHandler:^&#123;</div><div class="line">            switch (exportSession.status) &#123;</div><div class="line">                case AVAssetExportSessionStatusUnknown:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusUnknown&quot;);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusWaiting:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusWaiting&quot;);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusExporting:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusExporting&quot;);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusCompleted:&#123;</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusCompleted&quot;);</div><div class="line">                    self.videoLocalURL = [NSURL fileURLWithPath:outputFilePath];</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">                case AVAssetExportSessionStatusFailed:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusFailed&quot;);</div><div class="line">                    NSLog(@&quot;Export failed: %@&quot;, [[exportSession error] localizedDescription]);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusCancelled:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusCancelled&quot;);</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;];</div><div class="line">       </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Android下录制的时候如果不指定音频格式有些手机录制出来的视频中的音频编码可能是AMR（H.264，AMR Narrowband）在iOS &gt;= 4.3的iOS设备上将无法播放，所以Android录制视频需要指定音频编码为AAC</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://www.zhuwenbo.net/2015/08/14/2016-01-19-tips-for-video-recording-on-ios-and-android/" data-id="cirrspyar0000kl6q686yxwu1" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/01/">January 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/08/">August 2015</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/01/20/2016-01-20-uicollectionview-align-right/">UICollectionView align right</a>
+          </li>
+        
+          <li>
+            <a href="/2016/01/18/2016-01-19-mx-blue-hhkb-gh60/">MX Blue HHKB GH60</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/19/2016-01-19-use-dtcoretext-to-convert-html-into-nsattributedstring-and-calculate-the-labels-height/">使用DTCoreText转换HTML为NSAttributedString</a>
+          </li>
+        
+          <li>
+            <a href="/2015/08/14/2016-01-19-tips-for-video-recording-on-ios-and-android/">iOS和Android视频录制播放注意事项</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Kevin<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
