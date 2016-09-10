@@ -1,0 +1,716 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+    
+    <entry>
+      <title><![CDATA[Swift3 WebServer with Perfect]]></title>
+      <url>http://www.zhuwenbo.net/2016/09/10/swift3-server-perfectswift/</url>
+      <content type="html"><![CDATA[<h2 id="swiftenv"><a href="#swiftenv" class="headerlink" title="swiftenv"></a>swiftenv</h2><p>Swift版本管理的工具，类似于Python的pyenv，方便管理Swift的版本。<a href="https://github.com/kylef/swiftenv" title="swiftenv" target="_blank" rel="external">swiftenv GitHub</a></p>
+<ol>
+<li><p>可以通过brew安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install kylef/formulae/swiftenv</div></pre></td></tr></table></figure>
+</li>
+<li><p>配置环境变量</p>
+<p> For Bash:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;export SWIFTENV_ROOT=&quot;$HOME/.swiftenv&quot;&apos; &gt;&gt; ~/.bash_profile</div><div class="line">$ echo &apos;export PATH=&quot;$SWIFTENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; ~/.bash_profile</div><div class="line">$ echo &apos;eval &quot;$(swiftenv init -)&quot;&apos; &gt;&gt; ~/.bash_profile</div></pre></td></tr></table></figure>
+<p> <strong>NOTE</strong>: <em>在某些平台下, 你可能需要编辑 <code>~/.bashrc</code> 而非 <code>~/.bash_profile</code>.</em></p>
+<p> For ZSH:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;export SWIFTENV_ROOT=&quot;$HOME/.swiftenv&quot;&apos; &gt;&gt; ~/.zshenv</div><div class="line">$ echo &apos;export PATH=&quot;$SWIFTENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; ~/.zshenv</div><div class="line">$ echo &apos;eval &quot;$(swiftenv init -)&quot;&apos; &gt;&gt; ~/.zshenv</div></pre></td></tr></table></figure>
+<p> For Fish:</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;setenv SWIFTENV_ROOT &quot;$HOME/.swiftenv&quot;&apos; &gt;&gt; ~/.config/fish/config.fish</div><div class="line">$ echo &apos;setenv PATH &quot;$SWIFTENV_ROOT/bin&quot; $PATH&apos; &gt;&gt; ~/.config/fish/config.fish</div><div class="line">$ echo &apos;status --is-interactive; and . (swiftenv init -|psub)&apos; &gt;&gt; ~/.config/fish/config.fish</div></pre></td></tr></table></figure>
+<p> 如果还需要用到其他的shell, 请 <a href="https://github.com/kylef/swiftenv/issues/new" target="_blank" rel="external">open an issue</a></p>
+</li>
+<li><p>查看和安装指定 Swift 版本</p>
+<ol>
+<li><p>查看 Swift 版本</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ swiftenv version</div><div class="line">DEVELOPMENT-SNAPSHOT-2016-09-07-a (set by /Users/zwb/.swiftenv/version)</div></pre></td></tr></table></figure>
+</li>
+<li><p>查看本地安装的所以swift版本，* 表示当前使用的 Swift 版本</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ swiftenv versions</div><div class="line">* DEVELOPMENT-SNAPSHOT-2016-09-07-a (set by /Users/zwb/.swiftenv/version)</div><div class="line">3.0</div><div class="line">2.2</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装swift3.0版本</p>
+<p> 在 <a href="https://github.com/apple/swift/releases" title="swift releases" target="_blank" rel="external">https://github.com/apple/swift/releases</a> 查看发行历史记录<br>安装某个Swift3.0版本，如</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swiftenv install swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="PerfectTemplate"><a href="#PerfectTemplate" class="headerlink" title="PerfectTemplate"></a>PerfectTemplate</h2><ol>
+<li><p>clone 项目模版</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/PerfectlySoft/PerfectTemplate.git</div><div class="line">cd PerfectTemplate</div></pre></td></tr></table></figure>
+</li>
+<li><p>设置项目使用的Swift版本</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swiftenv local swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a</div></pre></td></tr></table></figure>
+<p> 上面命令会写 .swift-version 文件，来保存该项目所有的Swift版本</p>
+</li>
+<li><p>生成xcode项目文件并打开</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ swift package generate-xcodeproj</div><div class="line">$ open generate-xcodeproj</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="Xcode-Configuration"><a href="#Xcode-Configuration" class="headerlink" title="Xcode Configuration"></a>Xcode Configuration</h2><ol>
+<li>打开 Xcode 8 的 Preferences<ol>
+<li>选择 Components - Toolchains - Swift Development Snapshot</li>
+<li>选择 Locations - Command Line Tools - Xcode 8.0， 来修改xcodebuild的版本号</li>
+</ol>
+</li>
+<li>编辑命令行 Run Scheme - Working Directory - Use custom working directory - 选择项目目录</li>
+<li>设置xcode项目的 Build Settings - Library Search Paths - $(PROJECT_DIR) recursive</li>
+<li>build 项目， Run</li>
+<li>浏览器访问 <a href="http://localhost:8181/" title="localhost" target="_blank" rel="external">http://localhost:8181/</a>， 出现Hello, world!页面</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[UICollectionView align right]]></title>
+      <url>http://www.zhuwenbo.net/2016/01/20/uicollectionview-align-right/</url>
+      <content type="html"><![CDATA[<p>参考链接：<br><a href="http://stackoverflow.com/questions/13588283/how-to-center-align-the-cells-of-a-uicollectionview" target="_blank" rel="external">http://stackoverflow.com/questions/13588283/how-to-center-align-the-cells-of-a-uicollectionview</a></p>
+<p>方案一：</p>
+<p>You can get similar result by performing a transform on the collection view and reverse the flip on its content:</p>
+<p>First when creating the UICollectionView I performed a flip on it:</p>
+<p>[collectionView_ setTransform:CGAffineTransformMakeScale(-1, 1)];</p>
+<p>Then subclass UICollectionViewCell and in here do the same flip on its contentView:</p>
+<p>[self.contentView setTransform:CGAffineTransformMakeScale(-1, 1)];</p>
+<p>方案二：<br><a href="https://github.com/mokagio/UICollectionViewRightAlignedLayout" target="_blank" rel="external">https://github.com/mokagio/UICollectionViewRightAlignedLayout</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[MX Blue HHKB GH60]]></title>
+      <url>http://www.zhuwenbo.net/2016/01/18/mx-blue-hhkb-gh60/</url>
+      <content type="html"><![CDATA[<img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_light_full.JPG" alt="GH60_light_full" title="GH60_light_full">
+<p>一直是一把 HHKB Pro2 在公司使用，回家的话就用 mpb 自带的键盘。<br>期间也用过青轴 minila air、poker2，但是 minila air 右边 shift 比较蛋疼，而且空格键很短，左边经常按不到，虽然左边的 fn 是可以设置成空格的，但是按着还是挺不爽的；poker2没有用很长时间，但是用过了 hhkb 之后就受不鸟其他键位了。。。所以一直都是用 mbp 的自带薄膜键盘，用 Karabiner 映射了一些键，比如 | 改成 delete。<br><a id="more"></a></p>
+<h2 id="突发奇想"><a href="#突发奇想" class="headerlink" title="突发奇想"></a>突发奇想</h2><p>要是能有一把 HHKB 键位的青轴键盘就好了，因为之前用过几把机械键盘都是青轴的，还是对青轴比较情有独钟一些。后来也去试过 minila air 和 cherry 的红轴，感觉和 hhkb pro2 手感其实相差不多，所以还是决定组一个青轴的区别与 hhkb pro2 的手感。</p>
+<h2 id="搜索材料"><a href="#搜索材料" class="headerlink" title="搜索材料"></a>搜索材料</h2><p>首先了解了一下板子，santa 的电路板我看了下，是可以组成 hhkb 键位的。于是当晚拉着客服问到了两点多，就下单了。<br>清单如下：</p>
+<pre><code>1. santa pcb 板子
+2. 定位板/钢板
+3. 卫星轴 4 个（空格，shift * 2，enter，control/caps lock）
+4. cherry青轴 67 个（老板给多发了几个，因为青轴可能有些坏轴）
+5. 塑料外壳
+6. PBT 键帽 117 键的，键位刚好组 hhkb 的键位
+7. 轴间纸一张
+8. 透明轴盖 65 个
+9. 热插拔针脚 130 个（一个键帽两个脚）
+</code></pre><h2 id="组装步骤"><a href="#组装步骤" class="headerlink" title="组装步骤"></a>组装步骤</h2><h3 id="组装卫星轴"><a href="#组装卫星轴" class="headerlink" title="组装卫星轴"></a>组装卫星轴</h3><p>有防呆设计，直接装上就好了，卡进的时候可能要稍稍用点力，没事不会弄坏，黑色的塑料还是有一些韧性的。组装好卫星轴后安装到 PCB 板上，有卡扣按上就好了。</p>
+<h3 id="开轴改热插拔，上轴间纸"><a href="#开轴改热插拔，上轴间纸" class="headerlink" title="开轴改热插拔，上轴间纸"></a>开轴改热插拔，上轴间纸</h3><p>开轴盖其实很简单，用镊子就可以，我刚开始在公司没有镊子，找了两个牙签开的也挺轻松。轴盖打开之后把两个热插拔针脚插入轴上方 LED 针脚处，然后贴上轴间纸，再盖上透明轴盖。这步挺费工夫的，我搞了两三个小时才搞定。其实吧，热插拔和轴间纸都没有必要装；反正 LED 便宜，真的要幻灯把 LED 换了就是。轴间纸也是玄学，根本不能防尘和影响手感。透明轴盖除了装B也没有什么乱用。</p>
+<h3 id="固定轴到-PCB-和定位板"><a href="#固定轴到-PCB-和定位板" class="headerlink" title="固定轴到 PCB 和定位板"></a>固定轴到 PCB 和定位板</h3><p>层次结构是这样的：PCB，轴，定位板。这步有点技巧，把四周的轴先安装好，然后再安装中间的轴。不要先把轴都卡好在定位板上，这样你会发现怎么都没法插到 PCB 板上了，因为 PCB 板上的 LED 孔很小，很难对上。而且现在是一个轴4个脚，你要一下将60 * 4，就是240个脚同时对准插在 PCB 板上，难度可想而知。所以如果你觉得定位板对手感影响不大的话，就可以省掉定位板，这样安装轴的难度会小很多。安装轴的时候注意不要将轴上的针脚弄歪，这样针脚容易折掉，没有插到 PCB 上对应的空里，需要拔下来重新插过。按好再拔下来难度很大。<br>要注意的是，拿你的键帽笔画一些，轴不要按错位置，不然后面你会发现怎么键帽相互打架，就悲剧了。这个事情在撸主身上就发生了，坐下的三个键，我往右边偏了一格，结果三个键全都拆下来重新按，重新焊；还好有吸枪，还是拆下来了。反正就是拆比装难了，一定不要按错了。</p>
+<h3 id="焊接"><a href="#焊接" class="headerlink" title="焊接"></a>焊接</h3><p>用橡皮筋固定PCB，轴和定位板，然后就上焊锡、松香电烙铁焊吧。最好弄个可调温的电烙铁，温度设置在400度比较合适。我是焊一排然后插到电脑上测试一排，如果有问题可以及时修正。240多个脚，加油焊吧，其实焊接还是挺快的，最费时费力的还是开轴改热插拔和贴轴间纸那步，所以我强烈建议不用改热插拔和贴轴间纸。<br><img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_weld_1.JPG" alt="GH60_weld_1" title="GH60_weld_1"><br><img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_weld_2.JPG" alt="GH60_weld_2" title="GH60_weld_2"></p>
+<h3 id="测试键位"><a href="#测试键位" class="headerlink" title="测试键位"></a>测试键位</h3><p>再测试一下所有键是否有用，右上角的键因为没有刷配系的原因可能是么有用的，没有关系你用万用表蜂鸣档试下，按键按下的时候能通就没有问题。一会刷了配系就好了。</p>
+<h3 id="安装热插拔-LED"><a href="#安装热插拔-LED" class="headerlink" title="安装热插拔 LED"></a>安装热插拔 LED</h3><p>LED 灯脚需要剪一下，剪了之后插进热插拔的孔就好，注意下正负极。默认是 fn + v，打开键盘灯，在打开键盘灯的情况下安装灯吧，安上点亮就好了，正负极安反也没关系，不会烧掉的。换下正负极就是了。<br>LED 长角的是正极，但是你剪短之后两个脚是一样长的，怎么区分正负极呢，你看 LED 等里面那坨东西有两部分组成，比较小一点的那个是正极。全按上之后就都亮了，恩，完美。<br><img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_LED.JPG" alt="GH60_LED" title="GH60_LED"></p>
+<h3 id="安装外壳"><a href="#安装外壳" class="headerlink" title="安装外壳"></a>安装外壳</h3><p>把焊好的 PCB 安装到外壳上，有6颗螺丝，拧上就好了。</p>
+<h3 id="安装键帽"><a href="#安装键帽" class="headerlink" title="安装键帽"></a>安装键帽</h3><p>键帽高度从下到上是 R1，R1，R2，R3，R4。一个个按上就是了，有卫星轴的对准一下卫星轴。那么硬件部分就组装好了。</p>
+<h3 id="刷配系-固件"><a href="#刷配系-固件" class="headerlink" title="刷配系/固件"></a>刷配系/固件</h3><p>mac 上据我所知只能刷 hex，有两个<a href="https://github.com/tmk/tmk_keyboard" target="_blank" rel="external">tmk_keyboard</a>，<a href="https://github.com/kairyu/tmk_keyboard_custom" target="_blank" rel="external">tmk_keyboard_custom</a>。记得是刷<a href="https://github.com/kairyu/tmk_keyboard_custom" target="_blank" rel="external">tmk_keyboard_custom</a>,不要去刷tmk_keyboard那个，刷了tmk_keyboard之后可能导致键盘没有反应，我也不知道为什么。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">//mac上需要安装的编译环境</div><div class="line">brew install Caskroom/cask/crosspack-avr</div><div class="line">brew install gcc-avr</div><div class="line">brew install dfu-programmer</div><div class="line">brew install gcc</div></pre></td></tr></table></figure></p>
+<p>再说一遍，请用<a href="https://github.com/kairyu/tmk_keyboard_custom" target="_blank" rel="external">tmk_keyboard_custom</a><br>在keyboard/gh60/config.h中定义宏 #define GH60_REV_CHN 1<br>make KEYMAP=hhkb dfu<br>但是你会发现有些报错，我一个个解决了，但是刷好之后，键盘并不能达到我想要的配系。所以我还是回家用 windows 的机器来刷 epp 文件，这个是图形化的工具比较简单。<br>项目地址：<a href="https://github.com/kairyu/tkg-toolkit" target="_blank" rel="external">tkg-toolkit</a><br>图形化界面网址：<br><a href="http://www.keyboard-layout-editor.com/#/gists/bd039cbcf89e7fad09e8" target="_blank" rel="external">keyboard-layout-editor</a><br><a href="http://www.enjoyclick.org/tkg/" target="_blank" rel="external">tkg</a><br>编辑好键位之后复制 raw-data 的 json 数据，粘贴的 tkg 网站里面，生成 epp。<br>然后设置tkg-toolkit/windows/setup.bat来安装设置，用tkg-toolkit/windows/reflash.bat来刷固件，刷之前按一下键盘背后的按钮进入 dfu 模式。如果有问题，记得装键盘驱动。</p>
+<h2 id="成品图"><a href="#成品图" class="headerlink" title="成品图"></a>成品图</h2><img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_light_gray.JPG" alt="GH60_light_gray" title="GH60_light_gray">
+<img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_light_part.JPG" alt="GH60_light_part" title="GH60_light_part">
+<img src="/2016/01/18/mx-blue-hhkb-gh60/GH60_no_light.JPG" alt="GH60_no_light" title="GH60_no_light">
+<h2 id="参考链接："><a href="#参考链接：" class="headerlink" title="参考链接："></a>参考链接：</h2><ul>
+<li><a href="http://www.pcwaishe.cn/thread-632487-1-1.html" target="_blank" rel="external">satan版GH 60组有钢茶 POKER配列详细教程</a></li>
+<li><a href="http://www.enjoyclick.org/tkg/" target="_blank" rel="external">tkg</a></li>
+<li><a href="http://www.keyboard-layout-editor.com/" target="_blank" rel="external">keyboard-layout-editor</a></li>
+<li><a href="http://www.satan.com.cn/p/399.html" target="_blank" rel="external">GH60PCB对比之Satan &amp; 菜菜</a></li>
+<li><a href="http://pcwaishe.cn/thread-641592-1-1.html" target="_blank" rel="external"> 新手扫盲——《GH60》 </a></li>
+<li><a href="http://www.pcwaishe.cn/thread-540703-1-1.html" target="_blank" rel="external">【你真的了解“轴间纸”？会装吗？内附详细教程】</a></li>
+<li><a href="http://www.armygroup.com.tw/sns/space.php?do=thread&amp;id=54&amp;uid=23227" target="_blank" rel="external">機械式鍵盤60Key-GH60 刷鍵位教程</a></li>
+<li><a href="http://www.v2ex.com/t/161887" target="_blank" rel="external">拿到 GH60 的艰辛与幸福之路</a></li>
+<li><a href="http://yuntv.letv.com/bcloud.html?uu=7ddc155d09&amp;vu=b90507659c" target="_blank" rel="external">刷配系视频</a></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[使用DTCoreText转换HTML为NSAttributedString]]></title>
+      <url>http://www.zhuwenbo.net/2015/08/19/use-dtcoretext-to-convert-html-into-nsattributedstring-and-calculate-the-labels-height/</url>
+      <content type="html"><![CDATA[<p>首先引入DTCoreText，推荐使用CocoaPods，因为其实DTCoreText还依赖于DTFoundation，手动引入比较麻烦。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">pod &apos;DTCoreText&apos;, &apos;~&gt; 1.6.16&apos;</div><div class="line"></div><div class="line">#import &lt;DTCoreText.h&gt;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<ul>
+<li><p>使用DTCoreText转换HTML为NSAttributedString</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSString *htmlString = @&quot;&lt;ol&gt;&lt;li&gt;aaaaaa&lt;/li&gt;&lt;li&gt;bbbbbbbb&lt;/li&gt;&lt;li&gt;cccccccccc&lt;/li&gt;&lt;/ol&gt;&quot;;</div><div class="line">NSData *data = [htmlString dataUsingEncoding:NSUTF8StringEncoding];</div><div class="line">NSAttributedString *attrString = [[NSAttributedString alloc] initWithHTMLData:data documentAttributes:nil];</div></pre></td></tr></table></figure>
+</li>
+<li><p>使用生成的NSAttributedString为UILabel的attributedText赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myLabel.attributedText = attrString;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>Error</strong> 其实这样是不行的，会报错lineBreakMode没有啊什么的，虽然生成的是NSAttributedString，但是这个和我们用[[NSAttributedString alloc] init]生成的是不一样的东西，得有容器来装它。</p>
+<ul>
+<li><p>使用DTAttributedLabel，初始化和赋值方法如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">- (DTAttributedLabel *)descriptionLabel</div><div class="line">&#123;</div><div class="line">    if (!_descriptionLabel) &#123;</div><div class="line">        _descriptionLabel = [[DTAttributedLabel alloc] init];</div><div class="line">        _descriptionLabel.numberOfLines = 0;</div><div class="line">        _descriptionLabel.lineBreakMode = NSLineBreakByCharWrapping;</div><div class="line">    &#125;</div><div class="line">    return _descriptionLabel;</div><div class="line">&#125;</div><div class="line">// 注意这里是attributedString，而不是attributedText</div><div class="line">descriptionLabel.attributedString = attrString;</div></pre></td></tr></table></figure>
+</li>
+<li><p>计算文字高度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">DTCoreTextLayouter *layouter = [[DTCoreTextLayouter alloc] initWithAttributedString:attrString];</div><div class="line">        </div><div class="line">CGRect maxRect = CGRectMake(0, 0, 320, CGFLOAT_HEIGHT_UNKNOWN);</div><div class="line">NSRange entireString = NSMakeRange(0, [attrString length]);</div><div class="line">DTCoreTextLayoutFrame *layoutFrame = [layouter layoutFrameWithRect:maxRect range:entireString];</div><div class="line">CGSize sizeNeed = [layoutFrame frame].size;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<p>参考链接：</p>
+<ol>
+<li><a href="https://github.com/Cocoanetics/DTCoreText" target="_blank" rel="external">DTCoreText on Github</a></li>
+<li><a href="https://docs.cocoanetics.com/DTCoreText/docs/Programming Guide.html" target="_blank" rel="external">DTCoreText Programming Guide</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS和Android视频录制播放注意事项]]></title>
+      <url>http://www.zhuwenbo.net/2015/08/14/tips-for-video-recording-on-ios-and-android/</url>
+      <content type="html"><![CDATA[<p>iOS使用AVFoundation录制的视频默认格式是mov的，在Android下无法播放，需要使用AVAssetExportSession转码/压缩之后Android才能播放，转码代码如下：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line">- (void)compressionVideoWithURL:(NSURL *)URL</div><div class="line">&#123;</div><div class="line">    AVURLAsset *avAssert = [AVURLAsset URLAssetWithURL:URL options:nil];</div><div class="line">    NSArray *compatiblePresets = [AVAssetExportSession exportPresetsCompatibleWithAsset:avAssert];</div><div class="line">    if ([compatiblePresets containsObject:AVAssetExportPresetLowQuality]) &#123;</div><div class="line">        AVAssetExportSession *exportSession = [[AVAssetExportSession alloc] initWithAsset:avAssert presetName:AVAssetExportPresetPassthrough];</div><div class="line">       </div><div class="line">        NSString *docDir = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject];</div><div class="line">        NSString *outputFilePath = [NSString stringWithFormat:@&quot;%@/%@&quot;, docDir, [AppManager zhidaoVideoCompressedFileName]];</div><div class="line">       </div><div class="line">        // can not replace the exists file,so delete it first</div><div class="line">        NSFileManager *fileManager = [NSFileManager defaultManager];</div><div class="line">        if ([fileManager fileExistsAtPath:outputFilePath]) &#123;</div><div class="line">            [fileManager removeItemAtPath:outputFilePath error:nil];</div><div class="line">        &#125;</div><div class="line">       </div><div class="line">        NSLog(@&quot;resultPath:%@&quot;, outputFilePath);</div><div class="line">       </div><div class="line">        exportSession.outputURL = [NSURL fileURLWithPath:outputFilePath];</div><div class="line">        exportSession.outputFileType = AVFileTypeMPEG4;</div><div class="line">        exportSession.shouldOptimizeForNetworkUse = YES;</div><div class="line">        [exportSession exportAsynchronouslyWithCompletionHandler:^&#123;</div><div class="line">            switch (exportSession.status) &#123;</div><div class="line">                case AVAssetExportSessionStatusUnknown:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusUnknown&quot;);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusWaiting:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusWaiting&quot;);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusExporting:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusExporting&quot;);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusCompleted:&#123;</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusCompleted&quot;);</div><div class="line">                    self.videoLocalURL = [NSURL fileURLWithPath:outputFilePath];</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">                case AVAssetExportSessionStatusFailed:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusFailed&quot;);</div><div class="line">                    NSLog(@&quot;Export failed: %@&quot;, [[exportSession error] localizedDescription]);</div><div class="line">                    break;</div><div class="line">                case AVAssetExportSessionStatusCancelled:</div><div class="line">                    NSLog(@&quot;AVAssetExportSessionStatusCancelled&quot;);</div><div class="line">                    break;</div><div class="line">            &#125;</div><div class="line">        &#125;];</div><div class="line">       </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Android下录制的时候如果不指定音频格式有些手机录制出来的视频中的音频编码可能是AMR（H.264，AMR Narrowband）在iOS &gt;= 4.3的iOS设备上将无法播放，所以Android录制视频需要指定音频编码为AAC</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS学习笔记2]]></title>
+      <url>http://www.zhuwenbo.net/2015/03/25/ios-note-2/</url>
+      <content type="html"><![CDATA[<p>1.UITableViewController<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@interface Tab1ViewController : UITableViewController</div></pre></td></tr></table></figure></p>
+<p>继承了UITableViewController就不用.m文件里面就：<br>1)不用创建TableView<br>2)不用写 <uitableviewdelegate, uitableviewdatasource="">，因为 UITableViewController已经有了<br>3)不用写 self.tableView.delegate = self;self.tableView.dataSource = self;<br>2.接口里声明的变量需要初始化，如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">@property (nonatomic, strong) NSMutableArray *items;</div><div class="line">//需要alloc init初始化</div><div class="line">self.items = [[NSMutableArray alloc] init];</div></pre></td></tr></table></figure></uitableviewdelegate,></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[iOS学习笔记1]]></title>
+      <url>http://www.zhuwenbo.net/2015/03/24/ios-note-1/</url>
+      <content type="html"><![CDATA[<ol>
+<li><p>删除代码方法只是单项的行为，xib-&gt;.m文件之间的reference还是在的。可以通过右键查看删除</p>
+<a id="more"></a>
+<img src="/2015/03/24/ios-note-1/storyboard1.png" alt="outlet_reference" title="outlet_reference">
+</li>
+<li><p>controller + shift + 单击，可以选择鼠标指针下所以元素</p>
+<img src="/2015/03/24/ios-note-1/storyboard2.png" alt="card_matching_game_select" title="card_matching_game_select"></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Lemon2开箱]]></title>
+      <url>http://www.zhuwenbo.net/2014/08/26/lemon2-open/</url>
+      <content type="html"><![CDATA[<p>Bong的微信发布了消息说Lemon2将在Bong商城开卖，BongII要到九月才发货，先搞个Lemon2玩玩，关键是不贵，49元，还包邮。昨天上午上去看的时候是显示顺丰快递，有个单号，去查了下单号，怎么都查不到。傍晚去看就变成了天天快递的单号，去查了下，显示已签收。已签收前台妹纸肿么都不通知啊我去，去前台看了下，果然安静的躺在那里。<br><a id="more"></a><br>科技感十足的外包装。</p>
+<img src="/2014/08/26/lemon2-open/lemonx1.jpg" alt="lemonx1" title="lemonx1">
+<p>这个iPhone画的很有感觉。<br><img src="/2014/08/26/lemon2-open/lemonx2.jpg" alt="lemonx2" title="lemonx2"></p>
+<p>&nbsp;</p>
+<p>打开箱子之后很友好的提示文字。<img src="/2014/08/26/lemon2-open/lemonx3.jpg" alt="lemonx3" title="lemonx3"></p>
+<p>正面就是一个lemon的标示，很简洁没有其他的修饰，很光很亮。<br><img src="/2014/08/26/lemon2-open/lemonx4.jpg" alt="lemonx4" title="lemonx4"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>底部做工倒是略显粗糙。<img src="/2014/08/26/lemon2-open/lemonx5.jpg" alt="lemonx5" title="lemonx5"></p>
+<p>电池盖是需要按下往下划，这里可以给个箭头方向的提示，撸主刚拿到手也不知道怎么开。<img src="/2014/08/26/lemon2-open/lemonx6.jpg" alt="lemonx6" title="lemonx6"></p>
+<p>需要3节7号电池，拔掉绝缘片之后就能正常使用了。<img src="/2014/08/26/lemon2-open/lemonx7.jpg" alt="lemonx7" title="lemonx7"></p>
+<p>站上去之后呼吸灯会进行规律闪烁，当闪烁为常亮时则为称重完成，灯黑了之后同步就同步好了。<br><img src="/2014/08/26/lemon2-open/lemonx8.jpg" alt="lemonx8" title="lemonx8"></p>
+<p>&nbsp;</p>
+<p>小伙伴们会问怎么和手机配对呢？首先当然要打开蓝牙并且下载小蛮腰应用。按照app提示的做就行了，只要打开app，上称。就可以完成配对了。<br></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Gitlab升级后不能push clone的问题]]></title>
+      <url>http://www.zhuwenbo.net/2014/05/20/gitlab-e5-8d-87-e7-ba-a7-e5-90-8e-e4-b8-8d-e8-83-bdpush-clone-e7-9a-84-e9-97-ae-e9-a2-98/</url>
+      <content type="html"><![CDATA[<p>Gitlab发布6.8.2之后第一时间把他给升级了。升级之后各种用不了，push,clone都报错<br>push报错，但其实是能push成功的</p>
+<pre class="brush: shell; gutter: true; first-line: 1">Writing objects: 100% (3/3), 209 bytes, done.
+Total 3 (delta 0), reused 0 (delta 0)
+fatal: protocol error: bad line length character: 34
+
+fatal: recursion detected in die handler
+fatal: The remote end hung up unexpectedly
+</pre>
+clone也是类似protocol error的错误，而且clone不出来。
+
+这个问题困扰了我好几天，google,baidu搜了好多天都没搜到。
+
+今天突然想到去stackoverflow去搜搜看，结果找到了这篇文章
+[http://stackoverflow.com/questions/22030866/gitlab-cannot-clone-over-http-after-upgrade-to-6-5](http://stackoverflow.com/questions/22030866/gitlab-cannot-clone-over-http-after-upgrade-to-6-5 "stackoverflow")
+又通过这篇文章链接到了
+[https://github.com/gitlabhq/gitlabhq/issues/5774](https://github.com/gitlabhq/gitlabhq/issues/5774 "github")
+回复中表示升级nginx版本能解决这个问题。
+
+公司这个服务器居然也是lnmp一键安装的，这个好办到lnmp安装目录下执行下upgrade_nginx.sh这个脚本，输入个nginx版本（找了个稳定版1.6.0），之后它就自动给你把nginx升级到你指定的版本了。升级之后重启下gitlab和lnmp问题得以解决。
+<pre class="brush: bash; gutter: true; first-line: 1">service gitlab restart
+/root/lnmp restart
+</pre>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Laravel Tutorial Part 4 - Views, Blade, and Layouts]]></title>
+      <url>http://www.zhuwenbo.net/2014/04/11/laravel-tutorial-part-4-views-blade-and-layouts/</url>
+      <content type="html"><![CDATA[<p>1.blade模版</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;Kevin Homepage&lt;/h1&gt;</div><div class="line"></div><div class="line">@<span class="keyword">if</span> (<span class="keyword">isset</span>($name))</div><div class="line">    &#123;&#123;$name&#125;&#125;&lt;br /&gt;</div><div class="line">@<span class="keyword">else</span></div><div class="line">    no name given</div><div class="line">@<span class="keyword">endif</span></div><div class="line"></div><div class="line">@<span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =]] &gt; $ele)</div><div class="line">    &#123;&#123;$key,$ele&#125;&#125;&lt;br&gt;</div><div class="line">@<span class="keyword">endforeach</span></div><div class="line"> </div><div class="line">&#123;&#123; $name &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $age &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $location &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $specilty &#125;&#125;&lt;br /&gt;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>2.layout方法一</p>
+<p>laravel4注意点：</p>
+<p>instead of @layout, we now use @extends</p>
+<p>instead of @endection, we now use @stop</p>
+<p>app/views/layouts/default.blade.php写法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;Kevin layout&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">@<span class="keyword">yield</span>(<span class="string">'content'</span>)</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>app/views/authors/index.blade.php写法</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">@extends(<span class="string">'layouts.default'</span>)</div><div class="line"> </div><div class="line">@section(<span class="string">'content'</span>)</div><div class="line">&lt;h1&gt;Kevin Homepage&lt;/h1&gt;</div><div class="line"> </div><div class="line">@<span class="keyword">if</span> (<span class="keyword">isset</span>($name))</div><div class="line">    &#123;&#123;$name&#125;&#125;&lt;br /&gt;</div><div class="line">@<span class="keyword">else</span></div><div class="line">    no name given</div><div class="line">@<span class="keyword">endif</span></div><div class="line"> </div><div class="line">@<span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =]] &gt; $ele)</div><div class="line">    &#123;&#123;$key,$ele&#125;&#125;&lt;br&gt;</div><div class="line">@<span class="keyword">endforeach</span></div><div class="line"> </div><div class="line">&#123;&#123; $name &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $age &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $location &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $specilty &#125;&#125;&lt;br /&gt;</div><div class="line">@stop</div></pre></td></tr></table></figure>
+<p>3.layout方法二<br>app/controllers/AuthorsController.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">View</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AuthorsController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> $restful = <span class="keyword">true</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> $layout = <span class="string">'layouts.default'</span>;</div><div class="line"> </div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">        $view = View::make(<span class="string">'authors.index'</span>, <span class="keyword">array</span>(<span class="string">'name'</span>=&gt;<span class="string">'Kevin'</span>))</div><div class="line">            -&gt;with(<span class="string">'age'</span>, <span class="string">'27'</span>);</div><div class="line">        $view-&gt;location = <span class="string">'Hangzhou'</span>;</div><div class="line">        $view[<span class="string">'specilty'</span>] = <span class="string">'PHP'</span>;</div><div class="line">        $view-&gt;arr = <span class="keyword">array</span>(<span class="string">'key1'</span> =&gt; <span class="string">'value1'</span>, <span class="string">'key2'</span> =&gt; <span class="string">'value2'</span>);</div><div class="line">        <span class="keyword">$this</span>-&gt;layout-&gt;title = <span class="string">'Kevin Layout'</span>;</div><div class="line">        <span class="keyword">$this</span>-&gt;layout-&gt;content = $view;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>app/views/authors/index.blade.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;Kevin Homepage&lt;/h1&gt;</div><div class="line"> </div><div class="line">@<span class="keyword">if</span> (<span class="keyword">isset</span>($name))</div><div class="line">    &#123;&#123;$name&#125;&#125;&lt;br /&gt;</div><div class="line">@<span class="keyword">else</span></div><div class="line">    no name given</div><div class="line">@<span class="keyword">endif</span></div><div class="line"> </div><div class="line">@<span class="keyword">foreach</span> ($arr <span class="keyword">as</span> $key =]] &gt; $ele)</div><div class="line">    &#123;&#123;$key,$ele&#125;&#125;&lt;br&gt;</div><div class="line">@<span class="keyword">endforeach</span></div><div class="line"> </div><div class="line">&#123;&#123; $name &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $age &#125;&#125;&lt;br /&gt;</div><div class="line">&#123;&#123; $location &#125;&#125;&lt;br /&gt;</div></pre></td></tr></table></figure>
+<p>app/views/layouts/default.blade.php</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;title&gt;&#123;&#123; $title &#125;&#125;&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&#123;&#123; $content &#125;&#125;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>放上视频地址：<br><div class="video-container"><iframe src="//www.youtube.com/embed/tJNJbWsV-sI" frameborder="0" allowfullscreen></iframe></div></p>
+<p>git地址：<a href="http://git.oschina.net/adin283/laravel" title="laravel_git" target="_blank" rel="external">http://git.oschina.net/adin283/laravel</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Laravel Tutorial Part 3 - Controllers, Actions, Passing Data and Routing]]></title>
+      <url>http://www.zhuwenbo.net/2014/03/31/laravel-tutorial-part-3-controllers-actions-passing-data-and-routing/</url>
+      <content type="html"><![CDATA[<p>1.创建controller：app/controller/AuthorController.php<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Support</span>\<span class="title">Facades</span>\<span class="title">View</span>;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AuthorsController</span> <span class="keyword">extends</span> <span class="title">BaseController</span> </span>&#123;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> $restful = <span class="keyword">true</span>;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">index</span><span class="params">()</span> </span>&#123;</div><div class="line">        $view = View::make(<span class="string">'authors.index'</span>, <span class="keyword">array</span>(<span class="string">'name'</span>=&gt;<span class="string">'Kevin'</span>))</div><div class="line">-&gt;with(<span class="string">'age'</span>, <span class="string">'27'</span>);</div><div class="line">        $view-&gt;location = <span class="string">'Hangzhou'</span>;</div><div class="line">        $view[<span class="string">'specilty'</span>] = <span class="string">'PHP'</span>;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> $view;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>2.创建views:app/views/authors/index.php<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;h1&gt;Kevin Homepage&lt;/h1&gt;</div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $name;<span class="meta">?&gt;</span>&lt;br /&gt;</div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $age;<span class="meta">?&gt;</span>&lt;br /&gt;</div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $location;<span class="meta">?&gt;</span>&lt;br /&gt;</div><div class="line"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $specilty;<span class="meta">?&gt;</span>&lt;br /&gt;</div></pre></td></tr></table></figure></p>
+<p>3.修改路由，app/routes.php，增加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Route::get(&apos;/authors&apos;, &apos;AuthorsController@index&apos;);</div></pre></td></tr></table></figure></p>
+<p>最后还是附上视频教程地址：</p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/Zz_R73eW3OU" frameborder="0" allowfullscreen></iframe></div>
+<p>源代码git地址：<a href="http://git.oschina.net/adin283/laravel" title="git" target="_blank" rel="external">http://git.oschina.net/adin283/laravel</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Laravel Tutorial Part 2 - Migrations and Artisan]]></title>
+      <url>http://www.zhuwenbo.net/2014/03/30/laravel-tutorial-part-2-migrations-and-artisan/</url>
+      <content type="html"><![CDATA[<p>1.安装migrate</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate:install</div></pre></td></tr></table></figure>
+<p>2.生成一个create_authors_table文件<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate:make create_authors_table</div></pre></td></tr></table></figure></p>
+<p>3.找到文件app/database/migrations/2014_03_27_143731_create_authors_table.php，编辑修改文件<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    Schema::create(<span class="string">'authors'</span>, <span class="function"><span class="keyword">function</span><span class="params">($table)</span></span>&#123;</div><div class="line">        $table-&gt;increments(<span class="string">'id'</span>);</div><div class="line">        $table-&gt;string(<span class="string">'name'</span>);</div><div class="line">        $table-&gt;text(<span class="string">'bio'</span>);</div><div class="line">        $table-&gt;timestamps();</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">Schema::drop(<span class="string">'author'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>4.运行migrate创建表：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">php artisan migrate</div></pre></td></tr></table></figure></p>
+<p>5.插入数据<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate:make add_authors</div></pre></td></tr></table></figure></p>
+<p>6.找到文件app/database/migrations/2014_03_27_144409_add_authors.php<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">up</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    DB::table(<span class="string">'authors'</span>)-&gt;insert(<span class="keyword">array</span>(</div><div class="line">        <span class="string">'name'</span> =&gt; <span class="string">'Kevin Hawk'</span>,</div><div class="line">        <span class="string">'bio'</span> =&gt; <span class="string">'Kevin Hawk is a really greate author!'</span>,</div><div class="line">        <span class="string">'created_at'</span> =&gt; date(<span class="string">"Y-m-d H:i:s"</span>),</div><div class="line">        <span class="string">'updated_at'</span> =&gt; date(<span class="string">"Y-m-d H:i:s"</span>),</div><div class="line">    ));</div><div class="line">DB::table(<span class="string">'authors'</span>)-&gt;insert(<span class="keyword">array</span>(</div><div class="line"><span class="string">'name'</span> =&gt; <span class="string">'Kevin Hawk2'</span>,</div><div class="line"><span class="string">'bio'</span> =&gt; <span class="string">'Kevin Hawk2 is a really greate author!'</span>,</div><div class="line"><span class="string">'created_at'</span> =&gt; date(<span class="string">"Y-m-d H:i:s"</span>),</div><div class="line"><span class="string">'updated_at'</span> =&gt; date(<span class="string">"Y-m-d H:i:s"</span>),</div><div class="line">));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">down</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">DB::table(<span class="string">'authors'</span>)-&gt;where(<span class="string">'name'</span>, <span class="string">'='</span>, <span class="string">'Kevin Hawk'</span>)-&gt;delete();</div><div class="line">DB::table(<span class="string">'authors'</span>)-&gt;where(<span class="string">'name'</span>, <span class="string">'='</span>, <span class="string">'Kevin Hawk2'</span>)-&gt;delete();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>7.运行插入数据<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">php artisan migrate</div></pre></td></tr></table></figure></p>
+<p>8.回滚操作<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">php artisan migrate:rollback</div><div class="line">php artisan migrate:reset</div></pre></td></tr></table></figure></p>
+<p>rollback或者reset的时候报错是因为没有自动加载类<br>需要运行：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer dump-autoload</div></pre></td></tr></table></figure></p>
+<p>最后附上示例代码地址：<a href="http://git.oschina.net/adin283/laravel" title="laravel" target="_blank" rel="external">http://git.oschina.net/adin283/laravel</a><br>再附上YouTube的视频：</p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/lEZ8cnVGVZE" frameborder="0" allowfullscreen></iframe></div>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Laravel Tutorial Part 1 - Installation and Configuration]]></title>
+      <url>http://www.zhuwenbo.net/2014/03/28/laravel-tutorial-part-1-installation-and-configuration/</url>
+      <content type="html"><![CDATA[<p>首先吐槽一下伟大的great firewall，在优酷搜了个laravel的视频教程，低清无码=高清全码啊，完全看不清，还是贴上给墙内的小伙伴参考吧。</p>
+<p><object width="640" height="480" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,40,0"><param name="src" value="http://player.youku.com/player.php/sid/XNDk5ODEyNjYw/v.swf"><embed width="640" height="480" type="application/x-shockwave-flash" src="http://player.youku.com/player.php/sid/XNDk5ODEyNjYw/v.swf"></object><br><a id="more"></a><br>无奈之下翻过墙，在youtube上搜了一下，好多资源。优酷转的就是这个andrewperk的视频，有720p，的虽然是英文的但是有字幕，中英文字幕都有。而且遇到的问题在下面的评论里面也基本都能解决。</p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/m5Jmh9JKnyQ" frameborder="0" allowfullscreen></iframe></div>
+<p>安装完成后修改 app/config/app.php,’url’修改为相应的域名，如<a href="http://laravel.localhost" target="_blank" rel="external">http://laravel.localhost</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;url&apos; =&gt; &apos;http://laravel.localhost&apos;</div></pre></td></tr></table></figure></p>
+<p>生成项目key：</p>
+<figure class="highlight plain"><figcaption><span>>php artisan key:generate</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Application key [a9So5Wo2DE5dSS8pmmcTDWkAsk5nYbhd] set successfully.</div></pre></td></tr></table></figure>
+<p>修改数据库配置：<br>app/config/database.php 修改connections下面的mysql的配置<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">    <span class="string">'default'</span> =&gt; <span class="string">'mysql'</span></div><div class="line">    <span class="string">'mysql'</span> =&gt; <span class="keyword">array</span>(</div><div class="line">    <span class="string">'driver'</span>    =&gt; <span class="string">'mysql'</span>,</div><div class="line">    <span class="string">'host'</span>      =&gt; <span class="string">'localhost'</span>,</div><div class="line">    <span class="string">'database'</span>  =&gt; <span class="string">'laravel'</span>,</div><div class="line">    <span class="string">'username'</span>  =&gt; <span class="string">'root'</span>,</div><div class="line">    <span class="string">'password'</span>  =&gt; <span class="string">''</span>,</div><div class="line">    <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</div><div class="line">    <span class="string">'collation'</span> =&gt; <span class="string">'utf8_general_ci'</span>,</div><div class="line">    <span class="string">'prefix'</span>    =&gt; <span class="string">''</span>,</div><div class="line">),</div></pre></td></tr></table></figure></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[php抓取小说(phpQuery使用)]]></title>
+      <url>http://www.zhuwenbo.net/2013/11/05/phpquery-spider/</url>
+      <content type="html"><![CDATA[<p>前些天无意中在iTools的推荐应用中看见了一个应用《青囊尸衣》，这不是我大学看过的一本小说吗。于是去AppStore上下载了这个应用，一看原来这本书还有两个续集：《青囊尸衣之天门鬼谷》、《青囊尸衣之祝由葬尺》。在手机上看了一两天，发现这个免费的app底下还有广告，非常碍眼，应用设计的也没那么精致。我希望能在kindle上看，但是去amazon的kindle商店搜索了一下没有找到这本书，在iReader、网易阅读上也搜不到。好吧，那我只能google、baidu之了。终于在一个叫<a href="http://book.kanunu.org/" title="努努书坊" target="_blank" rel="external">努努书坊</a>的网站搜到了剩下的两本书。想到以前初中高中都是每个章节点进去复制粘贴到txt里面，然后传到文曲星mp3上看，有时候遇上禁止复制的网站还得禁用js之后才能操作，体力活非常辛苦，现在作为程序猿当然会想到通过个小程序来抓取就是了。<br><a id="more"></a></p>
+<p>首先分析了一下网站的地址，非常连续的地址：</p>
+<p><a href="http://book.kanunu.org/book4/10098/223863.html~223932.html" target="_blank" rel="external">http://book.kanunu.org/book4/10098/223863.html~223932.html</a></p>
+<p>这样的话我们只要for一下就好了。</p>
+<p>然后看下dom结构，还是个比较旧的网址，都是table tr td的格式。而且像这样的几百个章节每个章节都看起来一样的页面肯定是生成的静态页面或者伪静态页面，那么他的dom结构肯定也是一样的，挑了几个章节的dom看了一下，果然dom结构都一样，这样的话这些页面都可以统一处理了。</p>
+<p>当然php抓取到的页面是整个页面，包含广告以及其他一些我们不需要的数据，如果写正则来匹配的话会比较复杂了。这里我们用到了phpQuery，用过jQuery的同学们肯定看一样就会用了，他们像jQuery的强大的选择器一样来查找操作页面的元素，这个项目是开源的在<a href="https://code.google.com/p/phpquery/" title="GoogleCode_phpQuery" target="_blank" rel="external">googleCode</a>和<a href="https://github.com/TobiaszCudnik/phpquery" title="github_phpQuery" target="_blank" rel="external">Github</a>都能找到。</p>
+<p>附上简单的抓取、匹配加保存文本文件的程序：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">require</span>(<span class="string">'phpQuery/phpQuery.php'</span>);</div><div class="line"><span class="comment">/**</span></div><div class="line"> * Fetch Page Data</div><div class="line"> * <span class="doctag">@param</span> String $url pageurl the fetch</div><div class="line"> * <span class="doctag">@return</span> Array an array include title and article</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fetch</span><span class="params">($url)</span></span></div><div class="line">&#123;</div><div class="line">	$ch = curl_init($url);</div><div class="line">	curl_setopt($ch, CURLOPT_HEADER, <span class="keyword">false</span>);</div><div class="line">	curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="keyword">true</span>);</div><div class="line">	curl_setopt($ch, CURLOPT_TIMEOUT_MS, <span class="number">10000</span>);</div><div class="line">	$content = curl_exec($ch);</div><div class="line"></div><div class="line">	$doc = phpQuery::newDocument($content);</div><div class="line">	phpQuery::selectDocument($doc);</div><div class="line">	<span class="comment">// use phpQuery like jQuery to select the title and content</span></div><div class="line">	$title = pq(<span class="string">"table:eq(3) font"</span>)-&gt;text();</div><div class="line">	$article = pq(<span class="string">"table:eq(4) td:eq(1) p"</span>)-&gt;text();</div><div class="line">	<span class="keyword">return</span> <span class="keyword">array</span>(</div><div class="line">		<span class="string">'title'</span> =&gt; $title,</div><div class="line">		<span class="string">'article'</span> =&gt; $article</div><div class="line">	);</div><div class="line">&#125;</div><div class="line"><span class="comment">/**</span></div><div class="line"> * Save content add the new content at the end of the file</div><div class="line"> * If the file does not exist, attempt to create it</div><div class="line"> * <span class="doctag">@param</span> String $path the path to save file</div><div class="line"> * <span class="doctag">@param</span> String $content content to save</div><div class="line"> */</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">save</span><span class="params">($path, $content)</span></span></div><div class="line">&#123;</div><div class="line">	$fp = fopen($path, <span class="string">"a+"</span>);</div><div class="line">	fwrite($fp, $content);</div><div class="line">	fclose($fp);</div><div class="line">&#125;</div><div class="line"></div><div class="line">$start = <span class="number">223863</span>;</div><div class="line">$end = <span class="number">223932</span>;</div><div class="line">$path = <span class="string">"./qnsy.txt"</span>;</div><div class="line"><span class="keyword">for</span> ($i = $start; $i &lt;= $end; $i++) &#123;</div><div class="line">	$url = <span class="string">"http://book.kanunu.org/book4/10098/&#123;$i&#125;.html"</span>;</div><div class="line">	$articleArr = fetch($url);</div><div class="line">	$title = $articleArr[<span class="string">'title'</span>];</div><div class="line">	$article = $articleArr[<span class="string">'article'</span>];</div><div class="line">	$content = <span class="string">"\r\n"</span> . $title . <span class="string">"\r\n"</span> . $article;</div><div class="line">	<span class="comment">// show fetched title</span></div><div class="line">	<span class="keyword">echo</span> $title . <span class="string">"&lt;br\&gt;\r\n"</span>;</div><div class="line">	save($path, $content);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>程序可以在命令行执行，如果是页面访问来执行的话你可能会遇到30秒超时的问题，需要修改一个php.ini的配置<br>max_execution_time = 30<br>改为300或者更大<br>max_execution_time = <span style="color: #ff0000;">300</span></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[CentOS下单网卡安装配置PPTP VPN]]></title>
+      <url>http://www.zhuwenbo.net/2013/07/01/centos-pptp-vpn/</url>
+      <content type="html"><![CDATA[<p>VPN(Virtual Private Network，虚拟专用网络)是专用网络的延伸，它可以通过共享Internet或公共网络连接模拟点对点专用连接的方式，在本地计算机和远程计算机之间发送数据。</p>
+<p>它具有良好的保密性和不受干扰性，使双方能够进行自由而安全的点对点连接。</p>
+<p>Linux下常用的VPN服务有两个，一个是pptp，另一个则是openvpn。前者更简单一些，但是只有独立服务器和XEN VPS可以搭建；后者则没有任何限制。前者搭建出来的VPN，不需要特殊的VPN客户端，直接在Windows下创建VPN拨号连接即可；而后者需要安装一个客户端来进行拨号<br><a id="more"></a><br>网络实验环境：</p>
+<p>服务器版本：CentOS 5.9</p>
+<p>VPN服务器:eth0=199.68.199.121</p>
+<p>内网IP地址：192.168.1.100-200(通过NAT分配给使用者)</p>
+<p>外网IP地址：199.68.199.121</p>
+<p>一、检查服务器是否有必要的支持。</p>
+<p>如果检查结果没有这些支持的话，是不能安装pptp的。执行指令：</p>
+<p>#modprobe ppp-compress-18 &amp;&amp; echo ok</p>
+<p>这条执行执行后，显示“ok”则表明通过。不过接下来还需要做另一个检查，输入指令：</p>
+<p>#cat /dev/net/tun</p>
+<p>如果这条指令显示结果为下面的文本，则表明通过：</p>
+<p>cat: /dev/net/tun: File descriptor in bad state</p>
+<p>上述两条均通过，才能安装pptp。否则就只能考虑openvpn，或者请你的服务商来解决这个问题。</p>
+<p>Cent os 5.5内核版本在2.6.15以上，因此下面检查可以忽略：</p>
+<p>检查PPP是否支持MPPE（这个要先装了ppp再运行，不然是结果0）</p>
+<p>用以下命令检查PPP是否支持MPPE：</p>
+<p>#strings ‘/usr/sbin/pppd’ |grep -i mppe | wc –lines</p>
+<p>如果以上命令输出为“0”则表示不支持；输出为“30”或更大的数字就表示支持，MPPE（Microsoft Point to Point Encryption，微软点对点加密）。</p>
+<p>二、安装ppp和iptables。</p>
+<p>默认情况下，完整的CentOS是带有这两个组件的，但是精简版的系统可能没有。我们输入下面的命令来确认，如果没有则进行安装，有的话系统不会做任何动作：</p>
+<p>#yum install -y ppp iptables</p>
+<p>三、安装pptp。</p>
+<p>这个软件在yum源里是没有的，我们需要手动<a href="http://www.2cto.com/soft" target="_blank" rel="external">下载</a>。我们先切换到tmp目录：</p>
+<p>#cd /tmp</p>
+<p>然后执行下面的命令来下载pptp安装包：</p>
+<p>#wget <a href="http://acelnmp.googlecode.com/files/pptpd-1.3.4-1.rhel5.1.i386.rpm" target="_blank" rel="external">http://acelnmp.googlecode.com/files/pptpd-1.3.4-1.rhel5.1.i386.rpm</a> （32位<a href="http://www.2cto.com/os/" target="_blank" rel="external">系统</a>使用）</p>
+<p>#wget <a href="http://acelnmp.googlecode.com/files/pptpd-1.3.4-1.rhel5.1.x86_64.rpm" target="_blank" rel="external">http://acelnmp.googlecode.com/files/pptpd-1.3.4-1.rhel5.1.x86_64.rpm</a> （64位系统使用）</p>
+<p>如果你的CentOS是32位的，则执行32位的那条指令；如果是64位的CentOS，则执行64位的那条指令。注意不要搞错了，搞错后面会报错客户端连接不上619或者800，并提示pptpd-logwtmp.so找不到。</p>
+<p>接下来安装pptp，同样分32位和64位系统：</p>
+<p>#rpm -ivh pptpd-1.3.4-1.rhel5.1.i386.rpm （32位系统使用）</p>
+<p>#rpm -ivh pptpd-1.3.4-1.rhel5.1.x86_64.rpm （64位系统使用）</p>
+<p>四、配置pptp。</p>
+<p>首先我们要编辑/etc/pptpd.conf文件：</p>
+<p>#vim /etc/pptpd.conf</p>
+<p>找到“locapip”和“remoteip”这两个配置项，将前面的“;”注释符去掉，更改为你期望的IP段值。localip表示服务器的IP，remoteip表示分配给客户端的IP地址，可以设置为区间。这里我们使用pptp默认的配置：</p>
+<p>localip 199.68.199.121</p>
+<p>remoteip 192.168.1.100-200</p>
+<p>注意，这里的IP段设置，将直接影响后面的iptables规则添加命令。请注意匹配的正确性，如果你嫌麻烦，建议就用本文的配置，就可以一直复制命令和文本使用了。</p>
+<p>接下来我们再编辑/etc/ppp/options.pptpd文件，为VPN添加Google DNS：</p>
+<p>#vim /etc/ppp/options.pptpd</p>
+<p>在末尾添加下面两行：</p>
+<p>一般只需修改ms-dns，分配给VPN客户端的DNS服务器IP地址</p>
+<p>name pptpd</p>
+<p>refuse-pap</p>
+<p>refuse-chap</p>
+<p>refuse-mschap</p>
+<p>require-mschap-v2</p>
+<p>require-mppe-128</p>
+<p>proxyarp</p>
+<p>lock</p>
+<p>nobsdcomp</p>
+<p>novj</p>
+<p>novjccomp</p>
+<p>nologfd</p>
+<p>idle 2592000 72个小时空闲断开</p>
+<p>ms-dns 8.8.8.8</p>
+<p>五、设置pptp VPN账号密码。</p>
+<p>我们需要编辑/etc/ppp/chap-secrets这个文件：</p>
+<p>#vim /etc/ppp/chap-secrets</p>
+<p>在这个文件里面，按照“用户名 pptpd 密码 *”的形式编写，一行一个账号和密码。比如添加用户名为test，密码为1234的用户，则编辑如下内容：</p>
+<p>test pptpd 1234 *（指定分配给test用户的ip）</p>
+<p>六、修改内核设置，使其支持转发。</p>
+<p>编辑/etc/sysctl.conf文件：</p>
+<p>#vim /etc/sysctl.conf</p>
+<p>将“net.ipv4.ip_forward”改为1，变成下面的形式：</p>
+<p>net.ipv4.ip_forward=1</p>
+<p>保存退出，并执行下面的命令来生效它：</p>
+<p>#sysctl -p</p>
+<p>七、添加iptables转发规则。</p>
+<p>经过前面的6个步骤，我们的VPN已经可以拨号了，但是还不能访问任何网页。最后一步就是添加iptables转发规则了，输入下面的指令：</p>
+<p>#iptables -t nat -A POSTROUTING -o eth0 -s 192.168.1.0/24 -j SNAT –to 199.68.199.121</p>
+<p>需要注意的是，这个指令中的“192.168.1.0/24”是根据之前的配置文件中的“remoteip”网段来改变的，比如你设置的 “10.0.0.1”网段，则应该改为“10.0.0.0/24”。此外还有一点需要注意的是eth0，如果你的外网网卡不是eth0，而是eth1（比如SoftLayer的服务器就是这样的情况，你可以用ifconfig命令来查看以太网口名称），那么请记得将eth0也更改为对应的网卡编号，不然是上不了网的！</p>
+<p>然后我们输入下面的指令让iptables保存我们刚才的转发规则，以便重启系统后不需要再次添加：</p>
+<p>#/etc/init.d/iptables save</p>
+<p>然后我们重启iptables：</p>
+<p>#/etc/init.d/iptables restart</p>
+<p>八、重启pptp服务。</p>
+<p>输入下面的指令重启pptp：</p>
+<p>#/etc/init.d/pptpd restart</p>
+<p>现在你已经可以连接自己的VPN并浏览网页了。不过我们还需要做最后的一步。</p>
+<p>九、设置开机自动运行服务。</p>
+<p>我们最后一步是将pptp和iptables设置为开机自动运行，这样就不需要每次重启服务器后手动启动服务了。当然你不需要自动启动服务的话可以忽略这一步。输入指令：</p>
+<p>#chkconfig pptpd on</p>
+<p>#chkconfig iptables on</p>
+<p>十、各种设备里面怎么连我就不多说了</p>
+<p>osx下就这样子：<br><img src="/2013/07/01/centos-pptp-vpn/osx_vpn_configuration.jpg" alt="osx_vpn_configuration" title="osx_vpn_configuration"></p>
+<p>ios下这样：<br><img src="/2013/07/01/centos-pptp-vpn/ios_vpn_configuration.jpg" alt="ios_vpn_configuration" title="ios_vpn_configuration"></p>
+<p>原文地址(貌似也不是原文我找那个“woshou的blog”也找不到)<a href="http://www.2cto.com/os/201205/130743.html" target="_blank" rel="external">http://www.2cto.com/os/201205/130743.html</a></p>
+<p>根据以上地址所述内容做了些修改，主要是七iptables部分。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Kindle Paperwhite]]></title>
+      <url>http://www.zhuwenbo.net/2013/06/19/kindle-paperwhite/</url>
+      <content type="html"><![CDATA[<img src="/2013/06/19/kindle-paperwhite/kindle1.jpg" alt="kindle1" title="kindle1">
+<a id="more"></a>
+<img src="/2013/06/19/kindle-paperwhite/kindle2.jpg" alt="kindle2" title="kindle2">
+<img src="/2013/06/19/kindle-paperwhite/kindle3.jpg" alt="kindle3" title="kindle3">
+<img src="/2013/06/19/kindle-paperwhite/kindle4.jpg" alt="kindle4" title="kindle4">
+<img src="/2013/06/19/kindle-paperwhite/kindle5.jpg" alt="kindle5" title="kindle5">
+<img src="/2013/06/19/kindle-paperwhite/kindle6.jpg" alt="kindle6" title="kindle6">
+<img src="/2013/06/19/kindle-paperwhite/kindle7.jpg" alt="kindle7" title="kindle7">
+<img src="/2013/06/19/kindle-paperwhite/kindle8.jpg" alt="kindle8" title="kindle8">
+<img src="/2013/06/19/kindle-paperwhite/kindle9.jpg" alt="kindle9" title="kindle9">
+<img src="/2013/06/19/kindle-paperwhite/kindle10.jpg" alt="kindle10" title="kindle10">
+<img src="/2013/06/19/kindle-paperwhite/kindle11.jpg" alt="kindle11" title="kindle11">
+<img src="/2013/06/19/kindle-paperwhite/kindle12.jpg" alt="kindle12" title="kindle12">
+<img src="/2013/06/19/kindle-paperwhite/kindle13.jpg" alt="kindle13" title="kindle13">
+<img src="/2013/06/19/kindle-paperwhite/kindle14.jpg" alt="kindle14" title="kindle14">
+<img src="/2013/06/19/kindle-paperwhite/kindle15.jpg" alt="kindle15" title="kindle15">
+<img src="/2013/06/19/kindle-paperwhite/kindle16.jpg" alt="kindle16" title="kindle16">
+<img src="/2013/06/19/kindle-paperwhite/kindle17.jpg" alt="kindle17" title="kindle17">
+<img src="/2013/06/19/kindle-paperwhite/kindle18.jpg" alt="kindle18" title="kindle18">
+<img src="/2013/06/19/kindle-paperwhite/kindle19.jpg" alt="kindle19" title="kindle19">
+<img src="/2013/06/19/kindle-paperwhite/kindle20.jpg" alt="kindle20" title="kindle20">
+<img src="/2013/06/19/kindle-paperwhite/kindle21.jpg" alt="kindle21" title="kindle21">
+<img src="/2013/06/19/kindle-paperwhite/kindle22.jpg" alt="kindle22" title="kindle22">
+<img src="/2013/06/19/kindle-paperwhite/kindle23.jpg" alt="kindle23" title="kindle23">
+<img src="/2013/06/19/kindle-paperwhite/kindle24.jpg" alt="kindle24" title="kindle24">
+<img src="/2013/06/19/kindle-paperwhite/kindle25.jpg" alt="kindle25" title="kindle25">]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[延迟静态绑定static的例子]]></title>
+      <url>http://www.zhuwenbo.net/2013/06/13/late-static-binding-demo/</url>
+      <content type="html"><![CDATA[<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">DomainObject</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">private</span> $_group;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;_group = <span class="keyword">static</span>::getGroup();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">create</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">static</span>();</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getGroup</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'default'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">User</span> <span class="keyword">extends</span> <span class="title">DomainObject</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getGroup</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'user'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Document</span> <span class="keyword">extends</span> <span class="title">DomainObject</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getGroup</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">return</span> <span class="string">'document'</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">SpreadSheet</span> <span class="keyword">extends</span> <span class="title">DomainObject</span></span></div><div class="line">&#123;</div><div class="line">&#125;</div><div class="line">print_r(User::create());</div><div class="line">print_r(Document::create());</div><div class="line">print_r(SpreadSheet::create());</div></pre></td></tr></table></figure>
+<p>结果当然是<br>User Object<br>(<br>[_group:DomainObject:private] =&gt; user<br>)<br>Document Object<br>(<br>[_group:DomainObject:private] =&gt; document<br>)<br>SpreadSheet Object<br>(<br>[_group:DomainObject:private] =&gt; default<br>)</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[不同域下的iframe高度自适应]]></title>
+      <url>http://www.zhuwenbo.net/2013/05/10/e4-b8-8d-e5-90-8c-e5-9f-9f-e4-b8-8b-e7-9a-84iframe-e9-ab-98-e5-ba-a6-e8-87-aa-e9-80-82-e5-ba-94/</url>
+      <content type="html"><![CDATA[<p>今天遇到这么个问题：在a页面中嵌入了一个iframe，这个iframe的页面（b页面）高度是不固定的，需要让他能自适应高度。在不同域下a不能操作b，b也不能操作a，因为js在这里有权限的问题。</p>
+<p>解决这个问题的思路是这样的：</p>
+<p>1、<a href="http://www.zhuwenbo.net/a.html里面嵌入一个iframe的地址为http://domain/b.html；">http://www.zhuwenbo.net/a.html里面嵌入一个iframe的地址为http://domain/b.html；</a></p>
+<p>2、而在这个b.html又嵌入一个跟a.html同域的iframe,如<a href="http://www.zhuwenbo.net/proxy.html页面。这样的话proxy.html页面就有权限操作a.html里面所嵌入的iframe的高度了；">http://www.zhuwenbo.net/proxy.html页面。这样的话proxy.html页面就有权限操作a.html里面所嵌入的iframe的高度了；</a></p>
+<p>3、而b.html在调用proxy.html可以传参数给proxy.html，通过proxy.html就可以来设置a.html的页面的iframe的高度的。</p>
+<p>看下示例的代码：</p>
+<p>a.html</p>
+<p>[code lang=”html”]<br> &lt;!DOCTYPE html&gt;<br> &lt;html&gt;<br> &lt;head&gt;<br> &lt;meta charset=utf-8&quot; /&gt;<br> &lt;title&gt;pageA&lt;/title&gt;<br> &lt;script&gt;<br> &lt;/script&gt;<br> &lt;/head&gt;<br> &lt;body&gt;<br> &lt;h1&gt;A页面&lt;/h1&gt;<br> &lt;iframe id=&quot;aiframe&quot; frameborder=&quot;none&quot; width=&quot;100%&quot; src=&quot;<a href="http://domain/b.html&quot;&gt;&lt;/iframe&amp;gt" target="_blank" rel="external">http://domain/b.html&quot;&gt;&lt;/iframe&amp;gt</a>;<br> &lt;/body&gt;<br> &lt;/html&gt;</p>
+<p>[/code]</p>
+<p>b.html</p>
+<p>[code lang=”html”]</p>
+<p>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta charset=utf-8&quot; /&gt;<br> &lt;title&gt;pageb&lt;/title&gt;<br> &lt;script&gt;<br> &lt;/script&gt;<br> &lt;/head&gt;<br> &lt;body&gt;<br> &lt;h1&gt;b页面&lt;/h1&gt;<br> &lt;/body&gt;<br> &lt;script&gt;<br> var height = document.body.scrollHeight;<br> var iframe = document.createElement(&quot;iframe&quot;);<br> iframe.src = &quot;<a href="http://www.zhuwenbo.net/proxy.html#&amp;quot">http://www.zhuwenbo.net/proxy.html#&amp;quot</a>; + height;<br> iframe.style.display = &quot;none&quot;;<br> document.body.appendChild(iframe);<br> &lt;/script&gt;<br> &lt;/html&gt;</p>
+<p>[/code]</p>
+<p>proxy.html</p>
+<p>[code lang=”html”]</p>
+<p>&lt;!DOCTYPE html&gt;<br>&lt;html&gt;<br>&lt;head&gt;<br>&lt;meta charset=utf-8&quot; /&gt;<br> &lt;title&gt;proxy&lt;/title&gt;<br> &lt;script type=&quot;text/javascript&quot;&gt;<br> var url = window.location.href;<br> var urlArr = url.split(&quot;#&quot;);<br> var iframeHeight = 1000;<br> if (urlArr[1] != undefined) {<br> iframeHeight = urlArr[1];<br> }<br> top.document.getElementById(&quot;aiframe&quot;).height = iframeHeight;<br> &lt;/script&gt;<br> &lt;/head&gt;<br> &lt;body&gt;<br> &lt;/body&gt;<br> &lt;/html&gt;</p>
+<p>[/code]</p>
+<p>这样的话执行顺序应该是这样的a.html-&gt;b.html-&gt;proxy.html-&gt;a.html</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[IE6下第一次打开页面jsonp请求解析错误]]></title>
+      <url>http://www.zhuwenbo.net/2013/03/12/ie6-e4-b8-8b-e7-ac-ac-e4-b8-80-e6-ac-a1-e6-89-93-e5-bc-80-e9-a1-b5-e9-9d-a2jsonp-e8-af-b7-e6-b1-82-e8-a7-a3-e6-9e-90-e9-94-99-e8-af-af/</url>
+      <content type="html"><![CDATA[<p>情景是这样的，之前有A、B两个相互独立的项目，现在需要把他们给合并到一起。A项目需要用ajax的方式来调用B项目中的某些接口，由于这两个项目是不同域名下的，所以存在跨域的问题，就用了jsonp的方式来调用B项目的接口。<br>A项目下的ajax的请求如下：</p>
+<p>[code lang=”js”]<br>var url = ‘http://‘ + requestHost + ‘/user/index/?’ + Math.random();<br>$.ajax({<br>    url : url,<br>    type : ‘POST’,<br>    dataType: ‘jsonp’,<br>    success : function (result) {<br>        if (result.errorcode == ‘notlogin’) {<br>            loginTip();<br>        } else {<br>            showUserInfo(result);<br>        }<br>    }<br>});<br>[/code]</p>
+<p>在这个例子里面，如果IE6以下开启Gzip就会有问题，会跑到ajax的error里面去，关闭了gzip之后就解决了问题，也不知道是不是回调的result里有一些特殊字符如”? / : -“的原因。<br>还有点奇怪的是IE6就是第一次打开的时候回调函数有问题，第二次刷新页面就会到到success回调里去。</p>
+<p>tips:如何在nginx中关闭对IE1-6关闭gzip压缩</p>
+<p>在http{<br>gzip on;<br>gzip_min_length 1k;<br>gzip_buffers 4 16k;<br>gzip_http_version 1.0;<br>gzip_comp_level 2;<br>gzip_types text/plain application/x-javascript text/css application/xml;<br><span style="color: #ff0000;">gzip_disable “MSIE [1-6].“;</span><br>gzip_vary on;<br>}</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[php 5.4 E_ALL包含了E_STRICT]]></title>
+      <url>http://www.zhuwenbo.net/2013/01/14/php5-4e-all-e5-8c-85-e5-90-ab-e4-ba-86e-strict/</url>
+      <content type="html"><![CDATA[<p>为了使用phpDocumentor2在内网安装了新版本的php5.4.3。不过phpDocumentor2安装不成功，于是用了phpDocumentor1.4.4。在生产文档的时候报了Strict的错误，导致生成的文档里面也包含了一堆strict报错的信息。于是想暂时先关掉E_STRICT的报错。查了一下写成</p>
+<p>error_reporting = E_ALL &amp; ~E_NOTICE</p>
+<p>就可以了，但是我怎么试都还是报错。因为网上查到的：E_ALL – 所有的错误和警告(不包括 E_STRICT)</p>
+<p>后来请pc童鞋来帮忙看了下写了个~E_STRICT，就解决了问题。</p>
+<p>查了下php5.4原来是E_ALL是包含了E_STRICT的，所以写成</p>
+<p>error_reporting = E_ALL &amp; ~E_STRICT</p>
+<p>后终于不报Strict的错误了。确实啊E_ALL就是应该包含E_STRICT才叫ALL。</p>
+<p>&nbsp;</p>
+<p>注：AppServ的php.ini在C:\Windows\php.ini，而wamp是在X:\wamp\bin\apache\apache2.2.22\bin\php.ini。这个可以通过phpinfo()的Loaded Configuration File查看。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[OmniFocus里可以用发送邮件的办法在Windows系统中实现快速收集功能(转)]]></title>
+      <url>http://www.zhuwenbo.net/2013/01/11/omnifocus-e9-87-8c-e5-8f-af-e4-bb-a5-e7-94-a8-e5-8f-91-e9-80-81-e9-82-ae-e4-bb-b6-e7-9a-84-e5-8a-9e-e6-b3-95-e5-9c-a8windows-e7-b3-bb-e7-bb-9f-e4-b8-ad-e5-ae-9e-e7-8e-b0-e5-bf-ab-e9-80-9f-e6-94-b6/</url>
+      <content type="html"><![CDATA[<div id="cnblogs_post_body"><br><br>OmniFocus功能很强大，但只能在Mac系统和iOS系统中运行，在办公室里我一般不带Macbook，在用iPhone实现收集时打字就是一种痛苦，以前我是用这种办法：<br><br>打开浏览器用<a href="http://weichuan.me/" target="_blank" rel="external">微传</a>把信息发送到iPhone中，再打开iPhone中的微传，复制到剪贴板中，再打开OmniFocus中把粘贴到OmniFocus的Inbox中，收集过程有些辛苦。<br><br>现在发现如果用了OmniFocus中的同步服务，可以申请开通Mail Drop功能，将Action直接发送到一个邮件地址中，从而直接同步到你的OmniFocus系统的Inbox中。<br><br>配置过程：<br><br>1）必须用omniFocus的同步<a href="https://manage.sync.omnigroup.com/" target="_blank" rel="external">Omni Sync Server</a>功能，当前这个功能是免费的，申请账号后，在iPhone中的omnifocus上配置该同步服务即可<br><br>2）登录到<a href="https://manage.sync.omnigroup.com/" target="_blank" rel="external">Omni Sync Server的WEB网站</a>上，用你的账号登录，申请开通Mail Drop to Inbox功能<br><br><a href="http://images.cnitblog.com/blog/3787/201301/04081929-7df0f6e99ad14ae69dd35655eb410bf8.png" target="_blank" rel="external"><img src="http://images.cnitblog.com/blog/3787/201301/04081932-c0423e04e79446a5b4cd10a44476b97a.png" alt="2013-01-04 08-06-14" title="2013-01-04 08-06-14"></a><br><br>3）当Mail Drop to Inbox开通后，你会收到一封邮件通知，然后你再登录<a href="https://manage.sync.omnigroup.com/" target="_blank" rel="external">Omni Sync Server</a>，可以得到一个邮件账号xxx@sync.omnigroup.com，然后你就可以往那个账号中发邮件了，Action的名称当作邮件的主题，详细信息放在邮件的正文中，当OmniFocus同步之后，这个Action就会出现在Inbox中了。为了发邮件方便，我直接安装了一个SMTPMailSender小程序，这个小程序支持命令行，配置好发送服务器和收件人地址，直接就可以发送到Inbox了。<br><br>SMTPMailSender.exe -f from@mymail.com -t xxx@sync.omnigroup.com<br><br></div><br><div id="MySignature"><br>————– Email: slofslb (at) qq.com ————<br>本文（转载的文章除外）版权归<a href="http://www.cnblogs.com/speeding/" target="_blank" rel="external">毒龙的程序人生</a>和博客园共有，欢迎转载，原文地址：<a href="http://www.cnblogs.com/speeding/archive/2013/01/04/2842656.html" target="_blank" rel="external">http://www.cnblogs.com/speeding/archive/2013/01/04/2842656.html</a><br>但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文链接，否则保留追究法律责任的权利。</div>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Sublime Text 2.0.1 Build2217破解方法]]></title>
+      <url>http://www.zhuwenbo.net/2012/10/15/sublime-text-crack/</url>
+      <content type="html"><![CDATA[<p>Sublime Text 2是一款非常给力的文本编辑软件。个人特别喜欢它默认的主题，在ZendStudio调出来的效果就是没有它里面的好看。而且Zen Coding等插件非常的好用。之前的版本不用注册也不会经常弹购买提示，也就这样用着，后来会经常弹。$59的价格还是扛不住。找了方法来破解一下，这里做一下记录。<br>1、首先安装它2.0.1的版本（Build2217）；<br>2、你得有一个十六进制编辑器，没有的话在这里<a href="http://www.winhex32.com/WinHexGreen.zip" title="WinHex绿色版" target="_blank" rel="external">下载</a>；<br>3、将你安装好的主程序文件sublime_text.exe备份一个方便还原；<br>4、用WinHex打开sublime_text.exe，跳到000CBB70那一行，将该行的8AC3修改为B001然后保存。<br><img src="/2012/10/15/sublime-text-crack/WinHexEditSublime.png" alt="WinHexEditSublime" title="WinHexEditSublime"><br>说明：1、如果进去找不到这行，请点击offset列，看到左侧的偏移地址是“十六进制”而不是“decimal”就可以了。<br><img src="/2012/10/15/sublime-text-crack/WinHexStatus.png" alt="WinHexStatus" title="WinHexStatus"><br>2、定位行可以用Alt+G（菜单栏：位置-&gt;调整到偏移量）来实现。<br><img src="/2012/10/15/sublime-text-crack/WinHexLocate.png" alt="WinHexLocate" title="WinHexLocate"><br>好了，这样就不会要求你购买注册啥啥的了。<br><img src="/2012/10/15/sublime-text-crack/SublimeCrackSuccess.png" alt="SublimeCrackSuccess" title="SublimeCrackSuccess"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[$$arr[$key]]]></title>
+      <url>http://www.zhuwenbo.net/2012/09/07/arrkey/</url>
+      <content type="html"><![CDATA[<p>因为之前程序里面有些变量是$t_Arr之类的，我们现在svn上传不了，所以就用下面方法解决：<br>$varName = ‘t_Arr’;<br>$$varName就是原来的$t_Arr，但是$$varName[$key]时候遇到问题。<br>[code lang=”php”]<br>$array = array(0, 1 ,2);<br>$test = ‘array’;<br>$a = 1;<br>$r = &quot;ab&quot;;<br>var_dump($$test[$a]);<br>输出：string(2) &quot;ab&quot;</p>
+<p>$t_Arr = array(<br> ‘key1’=&gt;’val1’ ,<br> ‘key2’=&gt;’val2’ ,<br> ‘key3’=&gt;’val3’<br>);<br>$test = ‘t_Arr’;<br>$key = ‘key2’;<br>var_dump($$test[$key]);<br>//输出:NULL</p>
+<p>$t_Arr = array (<br> ‘key1’=&gt;’val1’ ,<br> ‘key2’=&gt;’val2’ ,<br> ‘key3’=&gt;’val3’<br>);<br>$test = ‘t_Arr’;<br>$test2 = $$test;<br>$key = ‘key2’;<br>var_dump($$test);<br>var_dump($test2[$key]);<br>//输出:string(4) &quot;val2&quot;<br>[/code]<br>所以$$arr[$key] = $($arr[$key]),而不是($$arr)[$key]</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[又一个IE下JS的问题：substr]]></title>
+      <url>http://www.zhuwenbo.net/2012/09/07/e5-8f-88-e4-b8-80-e4-b8-aaie-e4-b8-8bjs-e7-9a-84-e9-97-ae-e9-a2-98-ef-bc-9asubstr/</url>
+      <content type="html"><![CDATA[<div>substr在不同浏览器下问题</div><br><div>[code lang=”js”]<br>var str=&quot;Hello world!&quot;<br>document.write(str.substr(-1, 1));<br>[/code]<br><br></div><br><div><br><div>chrome,firefox下是’!’</div><br><div>IE下是’H’</div><br><div>就是说IE下是不支持负值的offset的。</div><br><div><a href="http://www.w3school.com.cn/js/jsref_substr.asp" title="substr" target="_blank" rel="external">w3school</a>上有以下提示，不过我用的是IE8还有这个问题。</div><br><div>重要事项：在 IE 4 中，参数 <em>start</em> 的值无效。在这个 BUG 中，<em>start</em> 规定的是第 0 个字符的位置。在之后的版本中，此 BUG 已被修正。</div><br></div>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Javascript中函数定义方式的区别]]></title>
+      <url>http://www.zhuwenbo.net/2012/07/20/javascript-e4-b8-ad-e5-87-bd-e6-95-b0-e5-ae-9a-e4-b9-89-e6-96-b9-e5-bc-8f-e7-9a-84-e5-8c-ba-e5-88-ab/</url>
+      <content type="html"><![CDATA[<p>最近做项目的时候发现一个已经定义过的Js函数在调用的时候居然报错：<br>Uncaught TypeError: Property ‘fn1’ of object [object Window] is not a function</p>
+<p>记得之前曾经问过var fnc = function () {}和function fuc () {}两种方式有什么区别，被告知的答案是没有区别。不过通过这次遇到的问题，发现这两种方式确实是有区别的。看下下面两个例子</p>
+<p>例1：</p>
+<p>[code lang=”js”]<br>fn1();<br>var fn1 = function ()<br>{<br>alert(1);<br>}<br>[/code]</p>
+<p>例2：</p>
+<p>[code lang=”js”]<br>fn1();<br>function fn1()<br>{<br>alert(2);<br>}<br>[/code]</p>
+<p>例2能调到fn1函数，而例1则报错。</p>
+<div><br><br>前者只有在代码执行到那一行的时候才会有定义 ，后者函数会在代码执行以前被加载到作用域中。<br><br>函数声明会给函数指定一个名字，而函数表达式则是创建一个匿名函数，然后将这个匿名函数赋给一个变量。<br><br></div>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[IE下Array.splice()的bug]]></title>
+      <url>http://www.zhuwenbo.net/2012/05/23/ie-e4-b8-8barray-splice-e7-9a-84bug/</url>
+      <content type="html"><![CDATA[<p>之前一直用<span style="font-family: 'Times New Roman';">chrome</span><span style="font-family: 宋体;">来测试：</span></p>
+<p>[code lang=”js”]<br>var a = [1,2,3,4,5,6,7,8,9];</p>
+<p>b = a.splice(4);</p>
+<p>alert(a);a = [1,2,3,4];</p>
+<p>alert(b);b = [5,6,7,8,9];</p>
+<p>[/code]</p>
+<p>一直以为没有问题，调试了很久。后来才想起来是不是<span style="font-family: 'Times New Roman';">IE</span><span style="font-family: 宋体;">的问题，用</span><span style="font-family: 'Times New Roman';">IE</span><span style="font-family: 宋体;">测试了一下果然结果：</span><span style="font-family: 'Times New Roman';">a = [1,2,3,4,5,6,7,8,9];b</span><span style="font-family: 宋体;">为空。</span></p>
+<p>Splice<span style="font-family: 宋体;">函数在</span><span style="font-family: 'Times New Roman';">IE</span><span style="font-family: 宋体;">下使用务必加上第二个参数，就是删除之后几个元素，虽然手册上是说不加的话就删除后面所有的。</span></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[ZendStudio下隐藏.svn文件夹]]></title>
+      <url>http://www.zhuwenbo.net/2012/03/13/zendstudio-hide-svn-folder/</url>
+      <content type="html"><![CDATA[<p>对应的project上点右键选Properties(或者File-&gt;Properties)-&gt;PHP Build Path-&gt;展开项目-&gt;Excluded-&gt;Edit-&gt;Add-&gt;输入’**/.svn/‘-&gt;OK<br><img src="/2012/03/13/zendstudio-hide-svn-folder/zendstudio-hide-svn-folder-img-1.jpg" alt="zendstudio-hide-svn-folder-img-1" title="zendstudio-hide-svn-folder-img-1"><br><img src="/2012/03/13/zendstudio-hide-svn-folder/zendstudio-hide-svn-folder-img-2.jpg" alt="zendstudio-hide-svn-folder-img-2" title="zendstudio-hide-svn-folder-img-2"></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[IE6下+与push效率对比]]></title>
+      <url>http://www.zhuwenbo.net/2012/02/29/ie6-e4-b8-8b-e4-b8-8epush-e6-95-88-e7-8e-87-e5-af-b9-e6-af-94/</url>
+      <content type="html"><![CDATA[<p>IE6一直都是一个令开发者们头大的东西，下面一个例子说明IE6下+拼接符与数组push()方法的效率对比。</p>
+<p>[code lang=”js”]</p>
+<p>var str, arr, i, dateObj, startStamp, endStamp;<br>str = ‘’;</p>
+<p>startStamp = (new Date()).valueOf();<br>for(i=0; i&lt;80000; i++) {<br> str += ‘abcdefg’;<br>}<br>endStamp = (new Date()).valueOf();<br>alert(endStamp - startStamp);</p>
+<p>&amp;nbsp;</p>
+<p>arr = Array();<br>startStamp = (new Date()).valueOf();<br>for(i=0; i&lt;80000; i++) {<br> arr.push(‘abcdefg’);<br>}<br>endStamp = (new Date()).valueOf();<br>alert(endStamp - startStamp);<br>[/code]</p>
+<p>经以上测试，第一个alert值：17730；第二个alert值：211。IE6下push()方法是+的 84倍。</p>
+<p>而在IE7，8下却是+比较快，对于测试数据分别为42,62;45,71。</p>
+<p>Chrome17,数据基本稳定在14,2。</p>
+<p>Firefox两个数据都稳定在比较小的一个一位数。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Javascript类中变量的赋值问题]]></title>
+      <url>http://www.zhuwenbo.net/2012/02/29/javascript-e7-b1-bb-e4-b8-ad-e5-8f-98-e9-87-8f-e7-9a-84-e8-b5-8b-e5-80-bc-e9-97-ae-e9-a2-98/</url>
+      <content type="html"><![CDATA[<p>本文主要记录下工作中遇到的一个简单的问题，关于Javascript中object.prop和object[prop]赋值的区别。</p>
+<p>举一个简单的例子，比如要从stocks中获取出开盘价的信息，组成一个openList对象。实现代码如下：</p>
+<p>[code lang=”js”]</p>
+<p>var stocks = {<br> ‘600000’: {‘name’:’浦发银行’, ‘open’:’9.67’, ‘new’:’9.54’},<br> ‘600004’: {‘name’:’白云机场’, ‘open’:’6.82’, ‘new’:’6.77’},<br> ‘600005’: {‘name’:’武钢股份’, ‘open’:’3.23’, ‘new’:’3.19’},<br> ‘600006’: {‘name’:’东风汽车’, ‘open’:’3.96’, ‘new’:’3.86’}<br>};</p>
+<p>var openList = {<br> ‘600000’: ‘9.67’,<br> ‘600004’: ‘6.82’,<br> ‘600005’: ‘3.23’,<br> ‘600006’: ‘3.96’<br>};</p>
+<p>var result = {};<br>var i;<br>//获得开盘价数据对象<br>for (i in stocks) {<br> //方法1<br>// result[i] = stocks[i][‘open’];<br> //方法2<br> result.i = stocks[i][‘open’];<br>}<br>[/code]</p>
+<p>这里方法1，能获取到想要的结果。</p>
+<p>但是方法2获取的结果：{i: “3.96”}。</p>
+<p>所以对象.属性，这个属性不能是个变量，像这里的<em>i就成了对象的一个属性被覆盖了。</em></p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于SRS WOW HD调节]]></title>
+      <url>http://www.zhuwenbo.net/2012/02/17/e5-85-b3-e4-ba-8esrs-wow-hd-e8-b0-83-e8-8a-82/</url>
+      <content type="html"><![CDATA[<p>iriver的SRS分为5个部分.</p>
+<p>SRS:可调节范围1-10.主要影响声场的宽广度,大概在6左右是不开SRS的正常声场广度.6以下会觉得声音闷在一个房间里,相应的6以上声音会开阔一些,但是过高会引起声音略微混乱,浑浊不清.</p>
+<p>TruBass:可调节范围1-10.主要影响的是声音的低频部分.让低音部分更有弹性,量也更足.但是别开高了,不然耳朵受不了.PS:个人感觉5就差不多了.再高就有点大过了.</p>
+<p>Focus:可调节范围,低中高.我觉得新的SRS最好用的功能就是这个了,能让高音明亮讨好耳朵,且与SRS结合可以提高声音的密度形成一个完整的声场圈.</p>
+<p>WOW:可调节范围0-7,貌似是影响的人声部分的声场.值高了感觉声音像从头脑炸裂出来的.值低则感觉声音从远处飘来.3左右是正常的声场.</p>
+<p>Definition:可调节范围1-10,顾名思义,清晰度.最复杂的就是这个选项的调节.主要影响高音部分,但是对中低频段也有影响,值越高声音越明亮,中低频的声音会略微减小.当然值过高会有明显的齿音.</p>
+<p>SRS的每个部分是可能相互影响的,所以调节比较麻烦,现在我把我总结的调节方法说下:<br>首先把Focus调到中.<br>接着把SRS调到6,如果希望声场更旷阔则可调到更高的值,如果出现了声音中低频混浊不清的情况则应停止该项的调节.<br>调整TruBass选项,直到低音到合适的量.建议从5开始调.<br>调整Definition.逐渐从0开始加,直到中低频的混浊感消失,高音明亮.<br>这时,低频的量会衰减.适当提高Trubass的值,建议增加Definition值得一半即可.<br>最后,调节WOW选项,WOW选项是不语与其他选项相互影响的.把音场拉倒你喜欢的位置即可.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于SRS WOW HD调节]]></title>
+      <url>http://www.zhuwenbo.net/2012/02/17/srs-wow-hd/</url>
+      <content type="html"><![CDATA[<p>iriver的SRS分为5个部分.</p>
+<p>SRS:可调节范围1-10.主要影响声场的宽广度,大概在6左右是不开SRS的正常声场广度.6以下会觉得声音闷在一个房间里,相应的6以上声音会开阔一些,但是过高会引起声音略微混乱,浑浊不清.</p>
+<p>TruBass:可调节范围1-10.主要影响的是声音的低频部分.让低音部分更有弹性,量也更足.但是别开高了,不然耳朵受不了.PS:个人感觉5就差不多了.再高就有点大过了.</p>
+<p>Focus:可调节范围,低中高.我觉得新的SRS最好用的功能就是这个了,能让高音明亮讨好耳朵,且与SRS结合可以提高声音的密度形成一个完整的声场圈.</p>
+<p>WOW:可调节范围0-7,貌似是影响的人声部分的声场.值高了感觉声音像从头脑炸裂出来的.值低则感觉声音从远处飘来.3左右是正常的声场.</p>
+<p>Definition:可调节范围1-10,顾名思义,清晰度.最复杂的就是这个选项的调节.主要影响高音部分,但是对中低频段也有影响,值越高声音越明亮,中低频的声音会略微减小.当然值过高会有明显的齿音.</p>
+<p>SRS的每个部分是可能相互影响的,所以调节比较麻烦,现在我把我总结的调节方法说下:<br>首先把Focus调到中.<br>接着把SRS调到6,如果希望声场更旷阔则可调到更高的值,如果出现了声音中低频混浊不清的情况则应停止该项的调节.<br>调整TruBass选项,直到低音到合适的量.建议从5开始调.<br>调整Definition.逐渐从0开始加,直到中低频的混浊感消失,高音明亮.<br>这时,低频的量会衰减.适当提高Trubass的值,建议增加Definition值得一半即可.<br>最后,调节WOW选项,WOW选项是不语与其他选项相互影响的.把音场拉倒你喜欢的位置即可.</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于建站:VPS,Domain,LNMP]]></title>
+      <url>http://www.zhuwenbo.net/2012/02/06/build-website-vps-domain-lnmp/</url>
+      <content type="html"><![CDATA[<h2 id="一、VPS"><a href="#一、VPS" class="headerlink" title="一、VPS"></a>一、VPS</h2><p>其实之前只知道空间，觉得用人家的空间，什么配置都受人家控制，觉得会很不自由，用起来肯定不舒服。后来了解了一下公司测试服务器是怎么架的，才知道<a href="http://xen.org" title="xen" target="_blank" rel="external">Xen</a>的虚拟机可以实现高性能基于硬件的虚拟机。后来知道了有VPS(<span>Virtual Private Server</span>)这个好东西，完全可以自己来掌控。找了一些VPS供应商，国内的比较贵。国外的比较有名的也不便宜，我只是架个网站玩玩，不要求什么并发带宽流量，不用要求太高。所以选择了<a href="http://www.lightwave.net" title="Lightwave" target="_blank" rel="external">Lightwave</a>最便宜的那种7刀一个月，速度还可以，后来访问不了，客服给的帮助也挺及时有用的(当然要发英文的邮件去问)。<br><a href="http://www.lightwave.net/" title="Lightwave" target="_blank" rel="external">Lightwave</a>的VPS分Xen PV,Xen HVM,KVM,Hybrid。PV是半虚拟化，HVM是全虚拟化。<br>PV只能用于Linux内核的系统，效率更高，HVM可以虚拟所有常见操作系统，理论效率比PV略低。另外，HVM需要CPU虚拟化指令支持，PV无此要求。KVM理论性能优于Xen PV,不过也只支持Linux系统。至于Hybrid那个高端几个合体的东西，我就不去研究了。我选的是Xen PV，因为我用的是Linux系统。</p>
+<h2 id="二、域名注册"><a href="#二、域名注册" class="headerlink" title="二、域名注册"></a>二、域名注册</h2><p>我是万网注册的域名。想要的一些域名都没有了，将就用个so后缀的吧，简短好记就好了。完了之后在域名解析中加入A记录。</p>
+<h2 id="三、LNMP环境配置"><a href="#三、LNMP环境配置" class="headerlink" title="三、LNMP环境配置"></a>三、LNMP环境配置</h2><p>之前直接下了个<a href="http://www.apachefriends.org/zh_cn/xampp-linux.html" title="xampp" target="_blank" rel="external">LAMPP</a>的集成包，发现不行。自己编译安装太麻烦了，我这网速奇慢无比，打一条命令要好几秒钟延时，相当痛苦。后来发现了有人写了shell脚本，能自动编译安装LNMP环境的(<a href="http://lnmp.org/" title="lnmp" target="_blank" rel="external">地址</a>)，自己会去找依赖关系gcc什么的都会自动给你装好，真是太开心了。美国那边下东西都是几M几M来的，下载很快的就是编译安装比较慢。<br>装完之后还是各种不行，折腾了好几晚，以为域名没给我开通，但是ping和tracert都可以的啊。郁闷了好几天后写邮件问lightwave的客服。给了正确的答案：IPTables firewall is configured by default。回来看了下果然。</p>
+<p>vim /etc/sysconfig/iptables<br>加一条规则<br><strong>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT</strong><br>-A RH-Firewall-1-INPUT -j REJECT –reject-with icmp-host-prohibited(在这条之前)<br>所以之前不能访问的原因应该也是防火墙的原因，LAMPP应该也是能用的。<br>解下来，终于可以访问到我的网站了。</p>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[关于建站:VPS,Domain,LNMP]]></title>
+      <url>http://www.zhuwenbo.net/2012/02/06/e5-85-b3-e4-ba-8e-e5-bb-ba-e7-ab-99vpsdomainlnmp/</url>
+      <content type="html"><![CDATA[<h2 id="一、VPS"><a href="#一、VPS" class="headerlink" title="一、VPS"></a>一、VPS</h2><p>其实之前只知道空间，觉得用人家的空间，什么配置都受人家控制，觉得会很不自由，用起来肯定不舒服。后来了解了一下公司测试服务器是怎么架的，才知道<a href="http://xen.org" title="xen" target="_blank" rel="external">Xen</a>的虚拟机可以实现高性能基于硬件的虚拟机。后来知道了有VPS(<span>Virtual Private Server</span>)这个好东西，完全可以自己来掌控。找了一些VPS供应商，国内的比较贵。国外的比较有名的也不便宜，我只是架个网站玩玩，不要求什么并发带宽流量，不用要求太高。所以选择了<a href="http://www.lightwave.net" title="Lightwave" target="_blank" rel="external">Lightwave</a>最便宜的那种7刀一个月，速度还可以，后来访问不了，客服给的帮助也挺及时有用的(当然要发英文的邮件去问)。<br><a href="http://www.lightwave.net/" title="Lightwave" target="_blank" rel="external">Lightwave</a>的VPS分Xen PV,Xen HVM,KVM,Hybrid。PV是半虚拟化，HVM是全虚拟化。<br>PV只能用于Linux内核的系统，效率更高，HVM可以虚拟所有常见操作系统，理论效率比PV略低。另外，HVM需要CPU虚拟化指令支持，PV无此要求。KVM理论性能优于Xen PV,不过也只支持Linux系统。至于Hybrid那个高端几个合体的东西，我就不去研究了。我选的是Xen PV，因为我用的是Linux系统。</p>
+<h2 id="二、域名注册"><a href="#二、域名注册" class="headerlink" title="二、域名注册"></a>二、域名注册</h2><p>我是万网注册的域名。想要的一些域名都没有了，将就用个so后缀的吧，简短好记就好了。完了之后在域名解析中加入A记录。</p>
+<h2 id="三、LNMP环境配置"><a href="#三、LNMP环境配置" class="headerlink" title="三、LNMP环境配置"></a>三、LNMP环境配置</h2><p>之前直接下了个<a href="http://www.apachefriends.org/zh_cn/xampp-linux.html" title="xampp" target="_blank" rel="external">LAMPP</a>的集成包，发现不行。自己编译安装太麻烦了，我这网速奇慢无比，打一条命令要好几秒钟延时，相当痛苦。后来发现了有人写了shell脚本，能自动编译安装LNMP环境的(<a href="http://lnmp.org/" title="lnmp" target="_blank" rel="external">地址</a>)，自己会去找依赖关系gcc什么的都会自动给你装好，真是太开心了。美国那边下东西都是几M几M来的，下载很快的就是编译安装比较慢。<br>装完之后还是各种不行，折腾了好几晚，以为域名没给我开通，但是ping和tracert都可以的啊。郁闷了好几天后写邮件问lightwave的客服。给了正确的答案：IPTables firewall is configured by default。回来看了下果然。</p>
+<p>vim /etc/sysconfig/iptables<br>加一条规则<br><strong>-A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 80 -j ACCEPT</strong><br>-A RH-Firewall-1-INPUT -j REJECT –reject-with icmp-host-prohibited(在这条之前)<br>所以之前不能访问的原因应该也是防火墙的原因，LAMPP应该也是能用的。<br>解下来，终于可以访问到我的网站了。</p>
+]]></content>
+    </entry>
+    
+  
+  
+    
+    <entry>
+      <title><![CDATA[about]]></title>
+      <url>http://www.zhuwenbo.net/about/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[404 Not Found：该页无法显示]]></title>
+      <url>http://www.zhuwenbo.net//404.html</url>
+      <content type="html"><![CDATA[<style type="text/css">
+    .article-header {
+        padding: 0;
+        padding-top: 26px;
+        border-left: none;
+        text-align: center;
+    }
+    .article-header:hover {
+        border-left: none;
+    }
+    .article-title {
+        font-size: 2.1em;
+    }
+    strong a {
+        color: #747474;
+    }
+    .article-meta {
+        display: none;
+    }
+    .share {
+        display: none;
+    }
+    .ds-meta {
+        display: none;
+    }
+    .player {
+        margin-left: -10px;
+    }
+    .sign {
+        text-align: right;
+        font-style: italic;
+    }
+      #page-visit {
+        display: none;
+    }
+    .center {
+        text-align: center;
+        height: 2.5em;
+        font-weight: bold;
+    }
+    .article-entry hr {
+        margin: 0;
+    }
+    .pic {
+        text-align: center;
+        margin: 0;
+    }
+    .pic br {
+          display: none;
+      }
+    #container .article-info-post.article-info {
+      display: none;
+      }
+    #container .article .article-title {
+    padding: 0;
+    }
+</style>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[tags]]></title>
+      <url>http://www.zhuwenbo.net/tags/index.html</url>
+      <content type="html"></content>
+    </entry>
+    
+  
+</search>
