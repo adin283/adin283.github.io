@@ -307,7 +307,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="swiftenv"><a href="#swiftenv" class="headerlink" title="swiftenv"></a>swiftenv</h2><p>Swift版本管理的工具，类似于Python的pyenv，方便管理Swift的版本。<a href="https://github.com/kylef/swiftenv" title="swiftenv" target="_blank" rel="external">swiftenv GitHub</a></p>
+              <h2 id="swiftenv"><a href="#swiftenv" class="headerlink" title="swiftenv"></a>swiftenv</h2><p>Swift版本管理的工具，类似于Python的pyenv，方便管理Swift的版本。<a href="https://github.com/kylef/swiftenv" title="swiftenv">swiftenv GitHub</a></p>
 <ol>
 <li><p>可以通过brew安装</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ brew install kylef/formulae/swiftenv</div></pre></td></tr></table></figure>
@@ -320,47 +320,10 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;export SWIFTENV_ROOT=&quot;$HOME/.swiftenv&quot;&apos; &gt;&gt; ~/.zshenv</div><div class="line">$ echo &apos;export PATH=&quot;$SWIFTENV_ROOT/bin:$PATH&quot;&apos; &gt;&gt; ~/.zshenv</div><div class="line">$ echo &apos;eval &quot;$(swiftenv init -)&quot;&apos; &gt;&gt; ~/.zshenv</div></pre></td></tr></table></figure>
 <p> For Fish:</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;setenv SWIFTENV_ROOT &quot;$HOME/.swiftenv&quot;&apos; &gt;&gt; ~/.config/fish/config.fish</div><div class="line">$ echo &apos;setenv PATH &quot;$SWIFTENV_ROOT/bin&quot; $PATH&apos; &gt;&gt; ~/.config/fish/config.fish</div><div class="line">$ echo &apos;status --is-interactive; and . (swiftenv init -|psub)&apos; &gt;&gt; ~/.config/fish/config.fish</div></pre></td></tr></table></figure>
-<p> 如果还需要用到其他的shell, 请 <a href="https://github.com/kylef/swiftenv/issues/new" target="_blank" rel="external">open an issue</a></p>
-</li>
-<li><p>查看和安装指定 Swift 版本</p>
-<ol>
-<li><p>查看 Swift 版本</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ swiftenv version</div><div class="line">DEVELOPMENT-SNAPSHOT-2016-09-07-a (set by /Users/zwb/.swiftenv/version)</div></pre></td></tr></table></figure>
-</li>
-<li><p>查看本地安装的所以swift版本，* 表示当前使用的 Swift 版本</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ swiftenv versions</div><div class="line">* DEVELOPMENT-SNAPSHOT-2016-09-07-a (set by /Users/zwb/.swiftenv/version)</div><div class="line">3.0</div><div class="line">2.2</div></pre></td></tr></table></figure>
-</li>
-<li><p>安装swift3.0版本</p>
-<p> 在 <a href="https://github.com/apple/swift/releases" title="swift releases" target="_blank" rel="external">https://github.com/apple/swift/releases</a> 查看发行历史记录<br>安装某个Swift3.0版本，如</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swiftenv install swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a</div></pre></td></tr></table></figure>
+<p> 如果还需要用到其他的shell, 请 <a href="https://github.com/kylef/swiftenv/issues/new">open an issue</a></p>
 </li>
 </ol>
-</li>
-</ol>
-<h2 id="PerfectTemplate"><a href="#PerfectTemplate" class="headerlink" title="PerfectTemplate"></a>PerfectTemplate</h2><ol>
-<li><p>clone 项目模版</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git clone https://github.com/PerfectlySoft/PerfectTemplate.git</div><div class="line">cd PerfectTemplate</div></pre></td></tr></table></figure>
-</li>
-<li><p>设置项目使用的Swift版本</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">swiftenv local swift-DEVELOPMENT-SNAPSHOT-2016-09-07-a</div></pre></td></tr></table></figure>
-<p> 上面命令会写 .swift-version 文件，来保存该项目所有的Swift版本</p>
-</li>
-<li><p>生成xcode项目文件并打开</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ swift package generate-xcodeproj</div><div class="line">$ open generate-xcodeproj</div></pre></td></tr></table></figure>
-</li>
-</ol>
-<h2 id="Xcode-Configuration"><a href="#Xcode-Configuration" class="headerlink" title="Xcode Configuration"></a>Xcode Configuration</h2><ol>
-<li>打开 Xcode 8 的 Preferences<ol>
-<li>选择 Components - Toolchains - Swift Development Snapshot</li>
-<li>选择 Locations - Command Line Tools - Xcode 8.0， 来修改xcodebuild的版本号</li>
-</ol>
-</li>
-<li>编辑命令行 Run Scheme - Working Directory - Use custom working directory - 选择项目目录</li>
-<li>设置xcode项目的 Build Settings - Library Search Paths - $(PROJECT_DIR) recursive</li>
-<li>build 项目， Run</li>
-<li>浏览器访问 <a href="http://localhost:8181/" title="localhost" target="_blank" rel="external">http://localhost:8181/</a>， 出现Hello, world!页面</li>
-</ol>
-
+          
       
     </div>
     
@@ -377,6 +340,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Perfect/">Perfect</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift3/">Swift3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swiftenv/">swiftenv</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/2016/09/10/swift3-server-perfectswift/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

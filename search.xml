@@ -21,6 +21,9 @@
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ echo &apos;setenv SWIFTENV_ROOT &quot;$HOME/.swiftenv&quot;&apos; &gt;&gt; ~/.config/fish/config.fish</div><div class="line">$ echo &apos;setenv PATH &quot;$SWIFTENV_ROOT/bin&quot; $PATH&apos; &gt;&gt; ~/.config/fish/config.fish</div><div class="line">$ echo &apos;status --is-interactive; and . (swiftenv init -|psub)&apos; &gt;&gt; ~/.config/fish/config.fish</div></pre></td></tr></table></figure>
 <p> 如果还需要用到其他的shell, 请 <a href="https://github.com/kylef/swiftenv/issues/new" target="_blank" rel="external">open an issue</a></p>
 </li>
+</ol>
+<a id="more"></a>
+<ol>
 <li><p>查看和安装指定 Swift 版本</p>
 <ol>
 <li><p>查看 Swift 版本</p>
@@ -617,7 +620,7 @@ clone也是类似protocol error的错误，而且clone不出来。
     
     <entry>
       <title><![CDATA[关于建站:VPS,Domain,LNMP]]></title>
-      <url>http://www.zhuwenbo.net/2012/02/06/build-website-vps-domain-lnmp/</url>
+      <url>http://www.zhuwenbo.net/2012/02/06/e5-85-b3-e4-ba-8e-e5-bb-ba-e7-ab-99vpsdomainlnmp/</url>
       <content type="html"><![CDATA[<h2 id="一、VPS"><a href="#一、VPS" class="headerlink" title="一、VPS"></a>一、VPS</h2><p>其实之前只知道空间，觉得用人家的空间，什么配置都受人家控制，觉得会很不自由，用起来肯定不舒服。后来了解了一下公司测试服务器是怎么架的，才知道<a href="http://xen.org" title="xen" target="_blank" rel="external">Xen</a>的虚拟机可以实现高性能基于硬件的虚拟机。后来知道了有VPS(<span>Virtual Private Server</span>)这个好东西，完全可以自己来掌控。找了一些VPS供应商，国内的比较贵。国外的比较有名的也不便宜，我只是架个网站玩玩，不要求什么并发带宽流量，不用要求太高。所以选择了<a href="http://www.lightwave.net" title="Lightwave" target="_blank" rel="external">Lightwave</a>最便宜的那种7刀一个月，速度还可以，后来访问不了，客服给的帮助也挺及时有用的(当然要发英文的邮件去问)。<br><a href="http://www.lightwave.net/" title="Lightwave" target="_blank" rel="external">Lightwave</a>的VPS分Xen PV,Xen HVM,KVM,Hybrid。PV是半虚拟化，HVM是全虚拟化。<br>PV只能用于Linux内核的系统，效率更高，HVM可以虚拟所有常见操作系统，理论效率比PV略低。另外，HVM需要CPU虚拟化指令支持，PV无此要求。KVM理论性能优于Xen PV,不过也只支持Linux系统。至于Hybrid那个高端几个合体的东西，我就不去研究了。我选的是Xen PV，因为我用的是Linux系统。</p>
 <h2 id="二、域名注册"><a href="#二、域名注册" class="headerlink" title="二、域名注册"></a>二、域名注册</h2><p>我是万网注册的域名。想要的一些域名都没有了，将就用个so后缀的吧，简短好记就好了。完了之后在域名解析中加入A记录。</p>
 <h2 id="三、LNMP环境配置"><a href="#三、LNMP环境配置" class="headerlink" title="三、LNMP环境配置"></a>三、LNMP环境配置</h2><p>之前直接下了个<a href="http://www.apachefriends.org/zh_cn/xampp-linux.html" title="xampp" target="_blank" rel="external">LAMPP</a>的集成包，发现不行。自己编译安装太麻烦了，我这网速奇慢无比，打一条命令要好几秒钟延时，相当痛苦。后来发现了有人写了shell脚本，能自动编译安装LNMP环境的(<a href="http://lnmp.org/" title="lnmp" target="_blank" rel="external">地址</a>)，自己会去找依赖关系gcc什么的都会自动给你装好，真是太开心了。美国那边下东西都是几M几M来的，下载很快的就是编译安装比较慢。<br>装完之后还是各种不行，折腾了好几晚，以为域名没给我开通，但是ping和tracert都可以的啊。郁闷了好几天后写邮件问lightwave的客服。给了正确的答案：IPTables firewall is configured by default。回来看了下果然。</p>
@@ -627,7 +630,7 @@ clone也是类似protocol error的错误，而且clone不出来。
     
     <entry>
       <title><![CDATA[关于建站:VPS,Domain,LNMP]]></title>
-      <url>http://www.zhuwenbo.net/2012/02/06/e5-85-b3-e4-ba-8e-e5-bb-ba-e7-ab-99vpsdomainlnmp/</url>
+      <url>http://www.zhuwenbo.net/2012/02/06/build-website-vps-domain-lnmp/</url>
       <content type="html"><![CDATA[<h2 id="一、VPS"><a href="#一、VPS" class="headerlink" title="一、VPS"></a>一、VPS</h2><p>其实之前只知道空间，觉得用人家的空间，什么配置都受人家控制，觉得会很不自由，用起来肯定不舒服。后来了解了一下公司测试服务器是怎么架的，才知道<a href="http://xen.org" title="xen" target="_blank" rel="external">Xen</a>的虚拟机可以实现高性能基于硬件的虚拟机。后来知道了有VPS(<span>Virtual Private Server</span>)这个好东西，完全可以自己来掌控。找了一些VPS供应商，国内的比较贵。国外的比较有名的也不便宜，我只是架个网站玩玩，不要求什么并发带宽流量，不用要求太高。所以选择了<a href="http://www.lightwave.net" title="Lightwave" target="_blank" rel="external">Lightwave</a>最便宜的那种7刀一个月，速度还可以，后来访问不了，客服给的帮助也挺及时有用的(当然要发英文的邮件去问)。<br><a href="http://www.lightwave.net/" title="Lightwave" target="_blank" rel="external">Lightwave</a>的VPS分Xen PV,Xen HVM,KVM,Hybrid。PV是半虚拟化，HVM是全虚拟化。<br>PV只能用于Linux内核的系统，效率更高，HVM可以虚拟所有常见操作系统，理论效率比PV略低。另外，HVM需要CPU虚拟化指令支持，PV无此要求。KVM理论性能优于Xen PV,不过也只支持Linux系统。至于Hybrid那个高端几个合体的东西，我就不去研究了。我选的是Xen PV，因为我用的是Linux系统。</p>
 <h2 id="二、域名注册"><a href="#二、域名注册" class="headerlink" title="二、域名注册"></a>二、域名注册</h2><p>我是万网注册的域名。想要的一些域名都没有了，将就用个so后缀的吧，简短好记就好了。完了之后在域名解析中加入A记录。</p>
 <h2 id="三、LNMP环境配置"><a href="#三、LNMP环境配置" class="headerlink" title="三、LNMP环境配置"></a>三、LNMP环境配置</h2><p>之前直接下了个<a href="http://www.apachefriends.org/zh_cn/xampp-linux.html" title="xampp" target="_blank" rel="external">LAMPP</a>的集成包，发现不行。自己编译安装太麻烦了，我这网速奇慢无比，打一条命令要好几秒钟延时，相当痛苦。后来发现了有人写了shell脚本，能自动编译安装LNMP环境的(<a href="http://lnmp.org/" title="lnmp" target="_blank" rel="external">地址</a>)，自己会去找依赖关系gcc什么的都会自动给你装好，真是太开心了。美国那边下东西都是几M几M来的，下载很快的就是编译安装比较慢。<br>装完之后还是各种不行，折腾了好几晚，以为域名没给我开通，但是ping和tracert都可以的啊。郁闷了好几天后写邮件问lightwave的客服。给了正确的答案：IPTables firewall is configured by default。回来看了下果然。</p>
@@ -637,12 +640,6 @@ clone也是类似protocol error的错误，而且clone不出来。
     
   
   
-    
-    <entry>
-      <title><![CDATA[about]]></title>
-      <url>http://www.zhuwenbo.net/about/index.html</url>
-      <content type="html"></content>
-    </entry>
     
     <entry>
       <title><![CDATA[404 Not Found：该页无法显示]]></title>
@@ -704,6 +701,12 @@ clone也是类似protocol error的错误，而且clone不出来。
     padding: 0;
     }
 </style>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[about]]></title>
+      <url>http://www.zhuwenbo.net/about/index.html</url>
+      <content type="html"></content>
     </entry>
     
     <entry>
